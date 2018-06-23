@@ -3,7 +3,7 @@
 var express = require("express");
 console.log("contorller")
 // var router = express.Router();
-var db = require("../models");
+var db = require("../models/index");
 // create routes
 //---------------------------------
 // Sends to DOM

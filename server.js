@@ -31,3 +31,13 @@ var routes = require("./controllers/controller.js");
 app.listen(PORT, function() {
   console.log("App now listening at localhost:" + PORT);
 });
+
+// app.get("/", function(req, res) {
+//   console.log('hello out there')
+//   res.json("index")
+// });
+
+app.get("/", function(req, res) {
+  
+    res.render("index");
+  });

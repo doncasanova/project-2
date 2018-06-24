@@ -15,7 +15,12 @@ module.exports = function(app) {
 // test added by don casanova
   app.get("/", function(req, res) {
   
-    res.render("index");
+    res.render("don");
+  });
+  // test added by don casanova
+  app.get("/don/landing", function(req, res) {
+  
+    res.render("donlandingpage");
   });
 
 }

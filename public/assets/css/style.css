@@ -1,0 +1,27 @@
+
+body, html{
+    background-image: url(https://i.vimeocdn.com/video/506320553_1280x720.jpg);
+    height: 100%; 
+    
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+h1{
+    color:orange
+}
+
+
+
+
+.waterFall {
+    width: 200px;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    background-color: black
+  }

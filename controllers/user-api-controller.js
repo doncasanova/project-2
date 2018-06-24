@@ -1,5 +1,5 @@
 var db = require("../models");
-
+console.log("you are in the user-api-controller.js")
 module.exports = function(app) {
   app.get("/api/users", function(req, res) {
     // Here we add an "include" property to our options in our findAll query
@@ -11,4 +11,12 @@ module.exports = function(app) {
       res.json(dbUSer);
     });
   });
+
+// test added by don casanova
+  app.get("/", function(req, res) {
+  
+    res.render("index");
+  });
+
 }
+

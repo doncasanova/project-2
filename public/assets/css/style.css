@@ -15,13 +15,31 @@ h1{
     color:orange
 }
 
-
-
-
-.waterFall {
-    width: 200px;
-    border: 1px;
-    border-color: black;
-    border-style: solid;
-    background-color: black
+.waterFallSlideLeft {
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    text-transform: uppercase
+  }
+.waterFallSlideMiddle {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    text-transform: uppercase
+  }
+.waterFallSlideRight {
+    width: 100%;
+    background-color: yellow;
+    color: white;
+    text-align: center;
+    text-transform: uppercase
+  }
+.waterFallHeader {
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
   }

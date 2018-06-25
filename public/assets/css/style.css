@@ -18,23 +18,26 @@ h1{
 .waterFallSlideLeft {
     width: 100%;
     background-color: red;
-    color: white;
+    color: black;
     text-align: center;
-    text-transform: uppercase
+    text-transform: uppercase;
+    font-size: large;
   }
 .waterFallSlideMiddle {
     width: 100%;
     background-color: blue;
-    color: white;
+    color: black;
     text-align: center;
-    text-transform: uppercase
+    text-transform: uppercase;
+    font-size: large;
   }
 .waterFallSlideRight {
     width: 100%;
     background-color: yellow;
-    color: white;
+    color: black;
     text-align: center;
-    text-transform: uppercase
+    text-transform: uppercase;
+    font-size: large;
   }
 .waterFallHeader {
     width: 100%;

@@ -1,6 +1,49 @@
  {{!-- Setup the `index.handlebars` to have the template that Handlebars can render onto. --}} {{!-- Create a button in `index.handlebars`
 that will submit the user input into the database. --}}
-<form class="form-inline">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light navBarRollDown">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <h3>Tickets Galore</h3>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link LogOutClick" href="#">Log Out
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+
+<form class="form-inline slideUpLogIn">
   <label class="sr-only" for="inlineFormInputName2">Name</label>
   <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
 
@@ -23,15 +66,9 @@ that will submit the user input into the database. --}}
   <button type="submit" class=" userLogIn btn btn-primary mb-2">Submit</button>
 </form>
 
-<div class=" animation row d-flex justify-content-center">
-  <div class="col text-center">
-    <h1>Test one two three four</h1>
-  </div>
-</div>
-
 <div id="caleandar">
 </div>
-<div class="row">
+<div class="row m-2">
   <div class="col-2 waterFallSlideLeft justify-content-start m-2">
     {{!-- this is the water fall of ticket types on main page --}}
   </div>

@@ -1,37 +1,85 @@
-$(document).ready(function () {
 
-    $(".userPreference").on("click", function (event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-        console.log('clicked on preference')
+var ticketType = ['hockey', 'football', 'baseball', 'basketball', 'soccer', 'concerts', 'events of all kinds', 'exhibits']
+mainPage()
+function mainPage() {
+    $(document).ready(function () {
+        $(".navBarRollDown").slideUp();
+        $(".userPreference").on("click", function (event) {
+            // Make sure to preventDefault on a submit event.
+            event.preventDefault();
+            console.log('clicked on preference')
+        });
+
+        $(".userLogIn").on("click", function (event) {
+            // Make sure to preventDefault on a submit event.
+            event.preventDefault();
+
+            $(".navBarRollDown").slideDown();
+            $(".slideUpLogIn").slideUp();
+            loadAnimatedLeftSideColunm(ticketType)
+            window.setTimeout(function () {
+                loadAnimatedMiddleSideColunm(ticketType)
+            }, 500);
+            window.setTimeout(function () {
+                loadAnimatedRightSideColunm(ticketType)
+            }, 1000);
+
+            $(".LogOutClick").on("click", function (event) {
+                event.preventDefault();
+                mainPage()
+                
+            });
+        });
     });
+}
 
-    $(".userLogIn").on("click", function (event) {
-        // Make sure to preventDefault on a submit event.
-        event.preventDefault();
-        console.log('user log in click')
-    });
+function loadAnimatedLeftSideColunm(ticketType) {
 
-    loadAnimatedText()
-});
+    for (var i = 0; i < ticketType.length; i++) {
+        console.log(ticketType[1])
+        var div = $('<h6 class = "waterFallHeader p-1" >Buy,Sell,Trade</h6><p>' + ticketType[i] + '</p>').prependTo('.waterFallSlideLeft');
 
+        var height = div.outerHeight();
+        div.css({
+            "marginTop": -height,
+            "opacity": 0
+        }).animate({
+            "marginTop": 0,
+            "opacity": 1
+        }, "slow");
+    };
+};
 
-function loadAnimatedText() {
-    // $('#gen').click(function () {
-var test = 5
-        for (var i = 0; i < test; i++) {
-            var div = $('<h6>Another</h6><p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>').prependTo('.rainbowSlide');
+function loadAnimatedMiddleSideColunm(ticketType) {
 
-            var height = div.outerHeight();
-            div.css({
-                "marginTop": -height,
-                "opacity": 0
-            }).animate({
-                "marginTop": 0,
-                "opacity": 1
-            }, "slow");
-        };
-    // });
+    for (var i = 0; i < ticketType.length; i++) {
+        console.log(ticketType[1])
+        var div = $('<h6 class = "waterFallHeader p-1" >Buy,Sell,Trade</h6><p>' + ticketType[i] + '</p>').prependTo('.waterFallSlideMiddle');
 
+        var height = div.outerHeight();
+        div.css({
+            "marginTop": -height,
+            "opacity": 0
+        }).animate({
+            "marginTop": 0,
+            "opacity": 1
+        }, "slow");
+    };
+};
 
+function loadAnimatedRightSideColunm(ticketType) {
+
+    for (var i = 0; i < ticketType.length; i++) {
+        console.log(ticketType[1])
+        var div = $('<h6 class = "waterFallHeader p-1" >Buy,Sell,Trade</h6><p>' + ticketType[i] + '</p>').prependTo('.waterFallSlideRight');
+
+        var height = div.outerHeight();
+        div.css({
+            "marginTop": -height,
+            "opacity": 0
+        }).animate({
+            "marginTop": 0,
+            "opacity": 1
+        }, "slow");
+    };
 };

@@ -46,3 +46,10 @@ h1{
     text-align: center;
     text-transform: uppercase;
   }
+
+
+  /* rotating div */
+  #friends,#friends2 { 
+    position:absolute; 
+    opacity: .5;
+}

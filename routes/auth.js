@@ -12,16 +12,25 @@ module.exports = (app, passport) => {
         req.session.token = req.user.token;
         console.log('user token ', req.user.token);
         console.log('user profile ', req.user.profile);
+        console.log('user email', req.user.email);
+        console.log('req email', req.email);
         res.redirect('/');
       }
   );
 
+  // generate a url that asks permissions for Google+ and Google Calendar scopes
+  const scopes = [
+    //'https://www.googleapis.com/auth/plus.me',
+    //'https://www.googleapis.com/auth/calendar', 
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile',
+    'email'
+   ];
+
   app.get('/auth/google', passport.authenticate('google', {
-    // scope: ['https://www.googleapis.com/auth/plus.login',
-    //   'https://www.googleapis.com/auth/plus.profile.email']
-      scope: ['https://www.googleapis.com/auth/userinfo.profile']
-    })
-  );
+    scope: scopes
+  })
+);
 
   app.get('/login', (req, res) => {
     res.render('login', { user: req.user});

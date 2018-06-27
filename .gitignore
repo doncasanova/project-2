@@ -1,4 +1,7 @@
 node_modules
 node_modules/*
+.env
 .DS_Store
 .token
+auth_v2.js
+server.1.js

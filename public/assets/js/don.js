@@ -26,6 +26,10 @@ function mainPage() {
 
             $(".LogOutClick").on("click", function (event) {
                 event.preventDefault();
+                $(".waterFallHeader").slideUp();
+                $(".addeClass").slideUp();
+                $(".slideUpLogIn").slideDown();
+
                 mainPage()
                 
             });
@@ -83,3 +87,33 @@ function loadAnimatedRightSideColunm(ticketType) {
         }, "slow");
     };
 };
+
+
+//------------------------------------------
+//rotating div
+var p = 0;
+
+function moveit() {
+    p += 0.02;
+
+    var r = 200;
+    var xcenter = 200;
+    var ycenter = 100;
+    var newLeft = Math.floor(xcenter + (r * Math.cos(p)));
+    var newTop = Math.floor(ycenter + (r * Math.sin(p)));
+    $('#friends').animate({
+            top: newTop,
+            left: newLeft,
+        }, 30, function() {
+            moveit()
+                });
+    $('#friends2').animate({
+        top: newTop,
+        left: newLeft,
+    },60, function() {
+        moveit();
+    });
+ }
+$(document).ready(function() {
+    moveit();    
+});

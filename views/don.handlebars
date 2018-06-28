@@ -1,84 +1,7 @@
- {{!-- Setup the `index.handlebars` to have the template that Handlebars can render onto. --}} {{!-- Create a button in `index.handlebars`
-that will submit the user input into the database. --}}
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light navBarRollDown">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <h3>Tickets Galore</h3>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link LogOutClick" href="#">Log Out
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
 
 
-
-<form class="form-inline slideUpLogIn slideDownLogIn">
-  <label class="sr-only" for="inlineFormInputName2">Name</label>
-  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
-
-  <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-  <div class="input-group mb-2 mr-sm-2">
-    <div class="input-group-prepend">
-      <div class="input-group-text">@</div>
-    </div>
-    <input type="text" class="userLogIn form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
-  </div>
-
-
-  <div class="form-check mb-2 mr-sm-2">
-    <input class="form-check-input" type="checkbox" id="inlineFormCheck">
-    <label class="form-check-label" for="inlineFormCheck">
-      Remember me
-    </label>
-  </div>
-
-  <button type="submit" class=" userLogIn btn btn-primary mb-2">Submit</button>
-</form>
-
-<div id="caleandar">
-</div>
-<div class="row m-2">
-  <div class=" col-2 addeClass waterFallSlideLeft justify-content-start m-2">
-    {{!-- this is the water fall of ticket types on main page --}}
-  </div>
-  <div class="col-2 addeClass waterFallSlideMiddle justify-content-center m-2">
-    {{!-- this is the water fall of ticket types on main page --}}
-  </div>
-  <div class="col-2 addeClass waterFallSlideRight justify-content-end m-2">
-    {{!-- this is the water fall of ticket types on main page --}}
-  </div>
-</div>
+{{!-- -------------------------------------------------------------------------- --}}
+{{!-- new --}}
 
 <div id="friends">
   <img src="/images/ticket2.jpg" class="img-fluid rotate0" alt="Responsive image" id="pic1">
@@ -86,3 +9,40 @@ that will submit the user input into the database. --}}
 <div id="friends2">
   <img src="/images/ticket2.jpg" class="img-fluid rotate0" alt="Responsive image" id="pic1">
 </div>
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <img src="/images/ticket2.jpg" alt="ConnActivities logo" id="ca-logo" height="120" width="120">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <h1 class="text-center" id="logo">Tickets Galore<sup>&reg;</sup></h1>
+            <div id="my-signin2"></div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="text-center" id="tag-line">Buy Buy Buy</div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
+                <div class="panel panel-default panel-sign-in">
+                    <div class="panel-heading panel-heading-name text-center"> <strong>Sign In</strong>
+                    </div>
+                  
+                    <div class="panel-footer text-center">Not Registered? <a href="/sign-up" class="">Sign Up here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer navbar-fixed-bottom">
+            <div class="container">
+                <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>

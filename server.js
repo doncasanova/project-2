@@ -1,10 +1,10 @@
 require('dotenv').config(); // load values into process.env
 const express = require("express"),
-      bodyParser = require("body-parser"),
-      passport = require("passport"),
-      cookieParser = require("cookie-parser"),
-      //session = require("express-session"),
-      cookieSession = require("cookie-session")
+      bodyParser = require("body-parser")
+      passport = require("passport");
+      // cookieParser = require("cookie-parser"),
+      // //session = require("express-session"),
+      // cookieSession = require("cookie-session")
       //RedisStore = require('connect-redis')(session);
 
 // Sets up the Express App
@@ -14,12 +14,12 @@ var PORT = process.env.PORT || 8080;
 // Requiring our models for syncing
 var db = require("./models");
 
-app.use(cookieParser());
-app.use(cookieSession({
-  name: 'session',
-  keys: ['SECRECT KEY'],
-  maxAge: 24 * 60 * 60 * 1000
-}));
+// app.use(cookieParser());
+// app.use(cookieSession({
+//   name: 'session',
+//   keys: ['SECRECT KEY'],
+//   maxAge: 24 * 60 * 60 * 1000
+// }));
 // Initialize authenticaton 
 // app.use(session({ 
 // 	secret: 'cookie_secret',
@@ -28,12 +28,12 @@ app.use(cookieSession({
 // 		host: '127.0.0.1',
 // 		port: 6379
 // 	}),
-// 	proxy:  true,
+// 	proxy:  true,//
 //     resave: true,
 //     saveUninitialized: true
 // }));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Sets up the Express app to handle data parsing
 // Serve static content for the app from the "public" directory in the application directory.

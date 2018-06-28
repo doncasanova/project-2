@@ -30,11 +30,46 @@
                 <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
             </div>
         </footer>
+        {{!-- <video autoplay loop id="video-background" muted plays-inline>
+            <source src="https://secure.meetupstatic.com/s/img/457419671895069178/guest_home/video.mp4" type="video/mp4">
+        </video> --}}
     </div>
 
 
 
+<head>
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+</head>
+
+  
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
   <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+  <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+  <script type='text/javascript'>
+    function init({CLIENT_ID}) {
+      gapi.load('auth2', function() { });
+    }
+  </script>
+
 
 
   

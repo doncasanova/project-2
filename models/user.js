@@ -51,11 +51,19 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
+
     User.hasMany(models.ticket, {
       sourceKey: 'user_id',
       foreignKey: 'user_id',
       onDelete: "cascade"
     });
+
+    User.hasMany(models.user_interest, {
+      foreignKey: 'user_id',
+      sourceKey: 'user_id',
+      allowNull: false
+    });
+
   };
 
   return User;

@@ -1,19 +1,19 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-const googlePassport = require('../.token');
+//require('dotenv').config(); 
+
+console.log('CLIENT_ID ', process.env.CLIENT_ID);
 
 module.exports = (app, passport) => {
 
   app.get('/auth/google/callback',
       passport.authenticate('google', {
-          failureRedirect: '/login'
+          failureRedirect: '/signin'
       }),
       //(req, res) => {}
       (req, res) => {
         req.session.token = req.user.token;
-        console.log('user token ', req.user.token);
         console.log('user profile ', req.user.profile);
-        console.log('user email', req.user.email);
-        console.log('req email', req.email);
+        //console.log('user email', req.user.email);
         res.redirect('/');
       }
   );
@@ -32,11 +32,11 @@ module.exports = (app, passport) => {
   })
 );
 
-  app.get('/login', (req, res) => {
-    res.render('login', { user: req.user});
+  app.get('/signin', (req, res) => {
+    res.render('signin', { user: req.user});
   })
 
-  app.get('/logout', (req, res) => {
+  app.get('/signout', (req, res) => {
     req.logout();
     req.session = null;
     res.redirect('/');
@@ -71,8 +71,8 @@ module.exports = (app, passport) => {
   });
 
   passport.use(new GoogleStrategy({
-          clientID: googlePassport.CLIENT_ID,
-          clientSecret: googlePassport.CLIENT_SECRET,
+          clientID: process.env.CLIENT_ID,
+          clientSecret: process.env.CLIENT_SECRET,
           callbackURL: '/auth/google/callback',
           passReqToCallback : true
       },
@@ -87,6 +87,6 @@ module.exports = (app, passport) => {
   
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
-    res.redirect('/login');
+    res.redirect('/signin');
   }
 };

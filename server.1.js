@@ -1,14 +1,9 @@
-// *****************************************************************************
-// Server.js - This file is the initial starting point for the Node/Express server.
-//
-// ******************************************************************************
-// *** Dependencies
-// ===============================================
+require('dotenv').config(); // load values into process.env
 const express = require("express"),
       bodyParser = require("body-parser"),
       passport = require("passport"),
       cookieParser = require("cookie-parser"),
-      session = require("express-session"),
+      //session = require("express-session"),
       cookieSession = require("cookie-session")
       //RedisStore = require('connect-redis')(session);
 
@@ -16,34 +11,15 @@ const express = require("express"),
 var app = express();
 var PORT = process.env.PORT || 8080;
 
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
+// Requiring our models for syncing
+var models = require("./models");
 
-// parse application/x-www-form-urlencoded and application/json
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-// Passport does not directly manage your session, it only uses the session.
-// So you configure session attributes (e.g. life of your session) via express
-var sessionOptions = {
-  saveUninitialized: true, // saved new sessions
-  resave: false, // do not automatically write to the session store
-  store: sessionStore,
-  secret: config.session.secret,
-  cookie : { httpOnly: true, maxAge: 2419200000 } // configure when sessions expires
-}
-
-app.use(cookieParser(config.session.secret));
-app.use(session(sessionOptions));
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['SECRECT KEY'],
-//   maxAge: 24 * 60 * 60 * 1000
-// }));
+app.use(cookieParser());
+app.use(cookieSession({
+  name: 'session',
+  keys: ['SECRECT KEY'],
+  maxAge: 24 * 60 * 60 * 1000
+}));
 // Initialize authenticaton 
 // app.use(session({ 
 // 	secret: 'cookie_secret',
@@ -56,12 +32,16 @@ app.use(passport.session());
 //     resave: true,
 //     saveUninitialized: true
 // }));
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Sets up the Express app to handle data parsing
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
 
-
-
+// parse application/x-www-form-urlencoded and application/json
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
@@ -74,13 +54,26 @@ require("./controllers/user-api-controller.js")(app);
 
 // Route to auth
 var authRoute = require('./routes/auth.js')(app, passport);
-
-// Requiring our models for syncing
-var db = require("./models");
+// Route to landing page
+//app.get('/', (req, res) => res.sendFile('donlandingpage', { user: req.user, root : __dirname}));
+app.get('/', (req, res) => {
+  if (req.session.token) {
+      res.cookie('token', req.session.token);
+      res.json({
+          status: 'session cookie set'
+      });
+  } else {
+      res.cookie('token', '')
+      res.json({
+          status: 'session cookie not set'
+      });
+  }
+  res.sendFile('donlandingpage', { user: req.user, root : __dirname})
+});
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+models.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

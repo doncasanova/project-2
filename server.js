@@ -5,14 +5,17 @@ const express = require("express"),
       cookieParser = require("cookie-parser"),
       //session = require("express-session"),
       cookieSession = require("cookie-session")
-      //RedisStore = require('connect-redis')(session);
 
 // Sets up the Express App
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+// Sets up the Express app to handle data parsing
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
+
 // Requiring our models for syncing
-var db = require("./models");
+var models = require("./models");
 
 app.use(cookieParser());
 app.use(cookieSession({
@@ -20,24 +23,9 @@ app.use(cookieSession({
   keys: ['SECRECT KEY'],
   maxAge: 24 * 60 * 60 * 1000
 }));
-// Initialize authenticaton 
-// app.use(session({ 
-// 	secret: 'cookie_secret',
-// 	name:   'kaas',
-// 	store:  new RedisStore({
-// 		host: '127.0.0.1',
-// 		port: 6379
-// 	}),
-// 	proxy:  true,
-//     resave: true,
-//     saveUninitialized: true
-// }));
+
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Sets up the Express app to handle data parsing
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
 
 // parse application/x-www-form-urlencoded and application/json
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -73,7 +61,7 @@ app.get('/', (req, res) => {
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+models.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

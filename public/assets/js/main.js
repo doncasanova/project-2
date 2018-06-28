@@ -1,3 +1,4 @@
+
 // ---------------------------------------------------------------------------
 // google log-in js
    function onSuccess(googleUser) {
@@ -32,11 +33,11 @@ function changeBackground() {
         cur_image = 0;
 
     // change images
-    $( 'body' ).css({
+    $( '.backGround' ).css({
         backgroundImage: 'url(' + images[ cur_image ] + ')'
     });
 
-    $( 'body .slide' ).fadeOut( 'slow', function(){
+    $( '.backGround .slide' ).fadeOut( 'slow', function(){
         $( this ).css({
             backgroundImage: 'url(' + images[ cur_image ] + ')'
         }).show();
@@ -44,5 +45,5 @@ function changeBackground() {
 
 }
 
-setInterval( changeBackground, 5000 );
+setInterval( changeBackground, 3000 );
 // ---------------------------------------------------------------------------------------

@@ -1,30 +1,31 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-const googlePassport = require('../.token');
 
 module.exports = (app, passport) => {
 
   app.get('/auth/google/callback',
       passport.authenticate('google', {
-          failureRedirect: '/login'
+          failureRedirect: '/signin'
       }),
       (req, res) => {
         req.session.token = req.user.token;
         console.log('user token ', req.user.token);
         console.log('user profile ', req.user.profile);
+        console.log('user email ', req.user.profile.email);
         res.redirect('/');
       }
   );
 
   // generate a url that asks permissions for Google+ and Google Calendar scopes
   const scopes = [
-    'https://www.googleapis.com/auth/plus.me',
-    'https://www.googleapis.com/auth/calendar', 
+    'https://www.googleapis.com/auth/userinfo.email',
     'https://www.googleapis.com/auth/userinfo.profile',
     'email'
    ];
 
   /*
-  scope: ['https://www.googleapis.com/auth/plus.login',
+  scope: ['https://www.googleapis.com/auth/plus.signin',
+   'https://www.googleapis.com/auth/plus.me',
+    'https://www.googleapis.com/auth/calendar', 
     'https://www.googleapis.com/auth/plus.profile.email']
   */
 
@@ -33,12 +34,12 @@ module.exports = (app, passport) => {
     })
   );
 
-  app.get('/login', (req, res) => {
-    res.render('login', { user: req.user});
+  app.get('/signin', (req, res) => {
+    res.render('signin', { user: req.user});
   })
 
-  app.get('/logout', (req, res) => {
-    req.logout();
+  app.get('/signout', (req, res) => {
+    req.signout();
     req.session = null;
     res.redirect('/');
   })
@@ -78,8 +79,8 @@ app.get('/', ensureAuthenticated, (req, res) => {
   });
 
   passport.use(new GoogleStrategy({
-          clientID: googlePassport.CLIENT_ID,
-          clientSecret: googlePassport.CLIENT_SECRET,
+          clientID: process.env.CLIENT_ID,
+          clientSecret: process.env.CLIENT_SECRET,
           callbackURL: '/auth/google/callback',
           passReqToCallback : true
       },
@@ -94,6 +95,6 @@ app.get('/', ensureAuthenticated, (req, res) => {
   
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
-    res.redirect('/login');
+    res.redirect('/signin');
   }
 };

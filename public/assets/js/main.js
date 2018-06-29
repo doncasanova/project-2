@@ -22,13 +22,7 @@
   // ----------------------------------------------------------------------
   // transition background
   var images = [ 
-
-    "images/demo/bg-slide-01.jpg",
-    "images/demo/eminem.jpg",
-    "images/demo/timberwolves.jpg",
-    "images/demo/vikings.jpg",
-    "images/demo/wilds.jpg",
-    "http://gif.mocksession.com/wp-content/uploads/2011/12/DERP-BREES.gif" ];
+    "https://blog.roblox.com/wp-content/uploads/2017/09/Sports-Event-Banner_1920x1080_v01.jpg", "https://media.giphy.com/media/5iN37sLcfJWSY/giphy.gif", "http://sports.cbsimg.net/images/blogs/Jack040914.gif", "http://gif.mocksession.com/wp-content/uploads/2011/12/DERP-BREES.gif" ];
 var cur_image = 0;
 
 function changeBackground() {
@@ -51,5 +45,5 @@ function changeBackground() {
 
 }
 
-setInterval( changeBackground, 3000 );
+setInterval( changeBackground, 5000 );
 // ---------------------------------------------------------------------------------------

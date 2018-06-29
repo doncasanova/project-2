@@ -7,8 +7,8 @@ module.exports = (app, passport) => {
           failureRedirect: '/signin'
       }),
       (req, res) => {
-        req.session.token = req.user.token;
-        console.log('user token ', req.user.token);
+        // req.session.token = req.user.token;
+        // console.log('user token ', req.user.token);
         console.log('user profile ', req.user.profile);
         console.log('user email ', req.user.profile.email);
         res.redirect('/');
@@ -47,18 +47,18 @@ module.exports = (app, passport) => {
 // Route to landing page
 //app.get('/', (req, res) => res.sendFile('donlandingpage', { user: req.user, root : __dirname}));
 app.get('/', (req, res) => {
-  if (req.session.token) {
-      res.cookie('token', req.session.token);
-      res.json({
-          status: 'session cookie set'
-      });
-  } else {
-      res.cookie('token', '')
-      res.json({
-          status: 'session cookie not set'
-      });
-  }
-  res.sendFile('donlandingpage', { user: req.user, root : __dirname})
+  // if (req.session.token) {
+  //     res.cookie('token', req.session.token);
+  //     res.json({
+  //         status: 'session cookie set'
+  //     });
+  // } else {
+  //     res.cookie('token', '')
+  //     res.json({
+  //         status: 'session cookie not set'
+  //     });
+  // }
+  res.render('../views/index', { user: req.user, root : __dirname})
 });
 
 app.get('/', ensureAuthenticated, (req, res) => {

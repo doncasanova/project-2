@@ -1,4 +1,4 @@
-var index_api_controller = require('../controller/index_controller');
+var index_api_controller = require('../controllers/index-api-controller');
 
 module.exports = function(app) {
   
@@ -10,5 +10,5 @@ module.exports = function(app) {
 
   app.put('/api/tickets', index_api_controller.ticketUpdate);
   
-  app.Delete('/api/tickets/:id', index_api_controller.ticketDelete);
+  app.delete('/api/tickets/:id', index_api_controller.ticketDelete);
 }

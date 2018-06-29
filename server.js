@@ -18,12 +18,12 @@ app.use(express.static("public"));
 var db = require("./models");
 
 // Authentication
-app.use(cookieParser());
-app.use(cookieSession({
-  name: 'session',
-  keys: ['SECRECT KEY'],
-  maxAge: 24 * 60 * 60 * 1000
-}));
+// app.use(cookieParser());
+// app.use(cookieSession({
+//   name: 'session',
+//   keys: ['SECRECT KEY'],
+//   maxAge: 24 * 60 * 60 * 1000
+// }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -38,8 +38,8 @@ app.set("view engine", "handlebars");
 
 // Routes
 require('./routes/auth.js')(app, passport);
-require('/routes/index-routes')(app);
-require('/routes/index-api-routes')(app);
+require('./routes/index-routes')(app);
+require('./routes/index-api-routes')(app);
 
 // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync({ force: false }).then(function() {

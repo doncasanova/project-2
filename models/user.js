@@ -25,6 +25,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
 
+    user_identity: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    
     username: {
       type: DataTypes.STRING,
       allowNull: true
@@ -32,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
 
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
 
     about_me: {
@@ -41,7 +46,8 @@ module.exports = function(sequelize, DataTypes) {
     },
        
     last_login: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     },
 
     status: {

@@ -10,7 +10,7 @@ exports.ticketsAll = function (req, res) {
     query.ticket_id = req.query.ticket_id;
   }
 
-  db.Ticket.findAll({
+  db.ticket.findAll({
         where: query,
         include: [db.User] }) 
       .then(function (dbTicket) {
@@ -20,7 +20,7 @@ exports.ticketsAll = function (req, res) {
 
 // respont to GET /api/tickets/:id
   exports.ticketById = function (req, res) {
-    db.Ticket.findOne({
+    db.ticket.findOne({
       where: {
         ticket_id: req.params.id
       },
@@ -32,13 +32,13 @@ exports.ticketsAll = function (req, res) {
 
 // respond to POST /api/tickets
 exports.ticketCreate = function (req, res) {
-  db.Ticket.create(req.body)
+  db.ticket.create(req.body)
       .then(dbTicket => res.json(dbTicket));
 };
 
 // respond to PUT /api/tickets
 exports.ticketUpdate = function (req, res) {
-  db.Ticket.update(
+  db.ticket.update(
     req.body, 
     {
       where: {
@@ -51,7 +51,7 @@ exports.ticketUpdate = function (req, res) {
 
   // respond to DELETE /api/tickets/:id
   exports.ticketDelete = function (req, res) {
-    db.Ticket.destroy({
+    db.ticket.destroy({
       where: {
         ticket_id: req.params.id
       }

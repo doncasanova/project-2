@@ -1,4 +1,4 @@
-var index_controller = require('../controllers/index_controller');
+var index_controller = require('../controllers/index-controller');
 
 module.exports = function(app) {
 

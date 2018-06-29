@@ -1,4 +1,5 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
+const auth_controller = require('../controllers/auth-controller');
 
 module.exports = (app, passport) => {
 
@@ -11,6 +12,16 @@ module.exports = (app, passport) => {
         // console.log('user token ', req.user.token);
         console.log('user profile ', req.user.profile);
         console.log('user email ', req.user.profile.email);
+        var user = {
+          first_name: req.user.profile.name.givenName,
+          last_name: req.user.profile.name.familyName,
+          email: req.user.profile.email,
+          user_identity: req.user.profile.id
+        };
+
+        if (!auth_controller.userGetById) {
+          auth_controller.userCreate(user);
+        }
         res.redirect('/');
       }
   );

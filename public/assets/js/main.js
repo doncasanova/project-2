@@ -22,7 +22,14 @@
   // ----------------------------------------------------------------------
   // transition background
   var images = [ 
-    "https://blog.roblox.com/wp-content/uploads/2017/09/Sports-Event-Banner_1920x1080_v01.jpg", "https://media.giphy.com/media/5iN37sLcfJWSY/giphy.gif", "http://sports.cbsimg.net/images/blogs/Jack040914.gif", "http://gif.mocksession.com/wp-content/uploads/2011/12/DERP-BREES.gif" ];
+    "https://blog.roblox.com/wp-content/uploads/2017/09/Sports-Event-Banner_1920x1080_v01.jpg", 
+    "images/demo/bg-slide-01.jpg", 
+    "images/demo/eminem.jpg", 
+    "images/demo/wilds.jpg",
+    "images/demo/timberwolves.jpg",
+    "images/demo/mamma.jpg",
+    "images/demo/people.jpg",
+    "images/demo/vikings.jpg" ];
 var cur_image = 0;
 
 function changeBackground() {

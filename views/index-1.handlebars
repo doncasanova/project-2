@@ -1,0 +1,84 @@
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-md-offset-4">
+            <img src="/images/ticket2.jpg" alt="ConnActivities logo" id="ca-logo" height="120" width="120">
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
+                <div class="panel panel-default panel-sign-in">
+                    <div class="panel-heading panel-heading-name text-center"> <strong>Sign In</strong>
+                    </div>
+                  
+                    <div class="panel-footer text-center">Not Registered? <a href="/sign-up" class="">Sign Up here</a></div>
+                    <div class="panel-footer text-center">Not signed-in? <a href="/auth/google" class="">Sign In here</a></div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="footer navbar-fixed-bottom">
+            <div class="container">
+                <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
+            </div>
+        </footer>
+        {{!-- <video autoplay loop id="video-background" muted plays-inline>
+            <source src="https://secure.meetupstatic.com/s/img/457419671895069178/guest_home/video.mp4" type="video/mp4">
+        </video> --}}
+    </div>
+    <div class="row justify-content-center">
+        <h1 class="text-center" id="logo">Tickets Galore
+            <sup>&reg;</sup>
+        </h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="text-center" id="tag-line">Buy Buy Buy</div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="clickedOnGoogle " id="my-signin2"></div>
+    </div>
+</div>
+<div class="header-bg">
+                <div id="preloader">
+                    <div class="preloader"></div>
+                </div>
+                <div class="main-slider" id="main-slider">
+                    <!--==pics==-->
+                    <ul class="slides">
+                        <li><img src="images/demo/bg-slide-01.jpg" alt="Slide Image"/></li>
+                        <li><img src="images/demo/eminem.jpg" alt="Slide Image 2"/></li>
+                        <li><img src="images/demo/timberwolves.jpg" alt="Slide Image 3"/></li>
+                        <li><img src="images/demo/vikings.jpg" alt="Slide Image 4"/></li>
+                        <li><img src="images/demo/wilds.jpg" alt="Slide Image 5"/></li>
+                     </ul>
+                </div>
+            </div>
+
+<footer class="footer navbar-fixed-bottom">
+    <div class="container">
+        <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
+    </div>
+</footer>
+</div>
+  
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+

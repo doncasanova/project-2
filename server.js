@@ -11,19 +11,18 @@ const express = require("express"),
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+// Set database connection properties
+var config = require('./config/config.json');
+config.development.PORT = process.env.MYSQL_PORT;
+config.development.username = process.env.MYSQL_ROOT_USERNAME;
+config.development.password = process.env.MYSQL_ROOT_PASSWORD;
+
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
 // Requiring our models for syncing
 var db = require("./models");
 
-// Authentication
-// app.use(cookieParser());
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['SECRECT KEY'],
-//   maxAge: 24 * 60 * 60 * 1000
-// }));
 app.use(passport.initialize());
 app.use(passport.session());
 

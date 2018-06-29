@@ -22,7 +22,13 @@
   // ----------------------------------------------------------------------
   // transition background
   var images = [ 
-    "https://gtcrea8.com/wp-content/uploads/2014/06/Football-41.gif", "https://media.giphy.com/media/5iN37sLcfJWSY/giphy.gif", "http://sports.cbsimg.net/images/blogs/Jack040914.gif", "http://gif.mocksession.com/wp-content/uploads/2011/12/DERP-BREES.gif" ];
+
+    "images/demo/bg-slide-01.jpg",
+    "images/demo/eminem.jpg",
+    "images/demo/timberwolves.jpg",
+    "images/demo/vikings.jpg",
+    "images/demo/wilds.jpg",
+    "http://gif.mocksession.com/wp-content/uploads/2011/12/DERP-BREES.gif" ];
 var cur_image = 0;
 
 function changeBackground() {

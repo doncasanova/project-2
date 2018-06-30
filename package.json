@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+<<<<<<< HEAD
   "nodemonConfig": {
     "ignore": ["config/config.json"]
   },
+=======
+>>>>>>> 48708c95ae468c5357dbd3b07ed395af81c86731
   "scripts": {
     "test": "nodemon server"
   },

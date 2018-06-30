@@ -1,0 +1,176 @@
+<<<<<<< HEAD
+<h1>Tickets available for purchace or trade</h1>
+
+
+<ul>
+  {{#each tickets}}
+    
+      {{> tickets/ticket-partial}}
+
+  {{/each}}
+</ul>
+
+<h2>Add a ticket</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 ">
+
+      <form class="create-ticket-form">
+        <fieldset>
+          <legend></legend>
+          <div class="form-group">
+            <label class="form-control-label" for="email"></label>
+            <input type="text" id="email" name="email" placeholder="Enter your email address" class="form-control-lg">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="ticket_name"></label>
+            <input type="text" id="ticket_name" name="ticket_name" placeholder="Enter a ticket name" class="form-control-lg">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="location"></label>
+            <input type="text" id="location" name="location" placeholder="Enter a location" class="form-control-lg">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="season_start"></label>
+            <input type="text" id="season_start" name="season_start" placeholder="Enter season start date" class="form-control-lg">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="season_end"></label>
+            <input type="text" id="season_end" name="season_end" placeholder="Enter season end date" class="form-control-lg">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="price"></label>
+            <input type="text" id="price" name="price" placeholder="Enter a ticket price" class="form-control-lg">
+          </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary mb-3">Add</button>
+      </form>
+      <label>Enter a ticket you want to store and click the "Add" button</label>
+
+    </div>
+  </div>
+</div>
+=======
+<div class="container">
+    <div class="row">
+        <div class="col-4 justify-content-start border border-dark text-center">
+            {{!-- add handlebars loop here --}}
+            <H1>Users list of their tickets</H1>
+        </div>
+        <div class="col-4 ">
+
+
+        </div>
+
+        <div class="col-4 justify-content-end border border-dark text-center">
+            {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
+            <H1>Trade history here which may have items bought and items wanted</H1>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container">
+</div>
+<div class="row justify-content-center">
+    <h1 class="text-center" id="logo">Tickets Galore
+        <sup>&reg;</sup>
+    </h1>
+</div>
+<div class="row justify-content-center">
+    <div class="text-center" id="tag-line">Buy Buy Buy</div>
+</div>
+<div class="row justify-content-center">
+    <div class="clickedOnGoogle " id="my-signin2"></div>
+</div>
+
+<div class="header-bg">
+    <div id="preloader">
+        <div class="preloader"></div>
+    </div>
+
+
+
+    <footer class="footer navbar-fixed-bottom">
+        {{! bottom section: user-specific info !}}
+        <div class="container">
+            <div class="row  justify-content-center border border-dark text-center">
+                <div class="col-12">
+                    <ul>
+                        <h1>user specific info: notifications from site, preferences </h1>
+                        <H3 class="text-center">Your Intrests</H3>
+                        {{#each user_interests}}
+                        <li>
+                            <p>
+                                <button data-user_interestsid="{{this.id}}" class="yourStuff btn btn-success">Devour</button>
+                                <label class=" p-2 rounded bg-dark text-white placeholder=" " disabled">
+                                    {{this.user_id}}</label>
+                            </p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button">Button</button>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Submit your ticket to sell here" aria-label="" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button">Button</button>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Submit your bid here" aria-label="" aria-describedby="basic-addon1">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>
+
+
+<head>
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+</head>
+
+
+<script>
+    function onSuccess(googleUser) {
+        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+        console.log(error);
+    }
+    function renderButton() {
+        gapi.signin2.render('my-signin2', {
+            'scope': 'profile email',
+            'width': 240,
+            'height': 50,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': onSuccess,
+            'onfailure': onFailure
+        });
+    }
+</script>
+
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<script type='text/javascript'>
+    function init({ CLIENT_ID }) {
+        gapi.load('auth2', function () { });
+    }
+</script>
+
+
+
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+>>>>>>> 48708c95ae468c5357dbd3b07ed395af81c86731

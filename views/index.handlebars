@@ -1,52 +1,69 @@
-<h1>Tickets available for purchace or trade</h1>
-
-
-<ul>
-  {{#each tickets}}
-    
-      {{> tickets/ticket-partial}}
-
-  {{/each}}
-</ul>
-
-<h2>Add a ticket</h2>
-
+{{!< '../layouts/main.handlebars'}}
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 ">
-
-      <form class="create-ticket-form">
-        <fieldset>
-          <legend></legend>
-          <div class="form-group">
-            <label class="form-control-label" for="email"></label>
-            <input type="text" id="email" name="email" placeholder="Enter your email address" class="form-control-lg">
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-md-offset-4">
+      <img src="/images/ticket2.jpg" alt="ConnActivities logo" id="ca-logo" height="120" width="120">
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-4 col-sm-6 col-sm-offset-3 col-md-offset-4">
+        <div class="panel panel-default panel-sign-in">
+          <div class="panel-heading panel-heading-name text-center">
+            <strong>Sign In</strong>
           </div>
-          <div class="form-group">
-            <label class="form-control-label" for="ticket_name"></label>
-            <input type="text" id="ticket_name" name="ticket_name" placeholder="Enter a ticket name" class="form-control-lg">
+          <div class="panel-footer text-center">Not Registered?
+            <a href="/admin" class="">Sign Up here</a>
           </div>
-          <div class="form-group">
-            <label class="form-control-label" for="location"></label>
-            <input type="text" id="location" name="location" placeholder="Enter a location" class="form-control-lg">
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="season_start"></label>
-            <input type="text" id="season_start" name="season_start" placeholder="Enter season start date" class="form-control-lg">
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="season_end"></label>
-            <input type="text" id="season_end" name="season_end" placeholder="Enter season end date" class="form-control-lg">
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="price"></label>
-            <input type="text" id="price" name="price" placeholder="Enter a ticket price" class="form-control-lg">
-          </div>
-        </fieldset>
-        <button type="submit" class="btn btn-primary mb-3">Add</button>
-      </form>
-      <label>Enter a ticket you want to store and click the "Add" button</label>
-
+        </div>
+      </div>
     </div>
   </div>
+  <footer class="footer navbar-fixed-bottom">
+    <div class="container">
+      <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
+    </div>
+  </footer>
+  <div class="row justify-content-center">
+    <h1 class="text-center" id="logo">Tickets Galore
+      <sup>&reg;</sup>
+    </h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="text-center" id="tag-line">Buy Buy Buy</div>
+  </div>
+  <div class="row justify-content-center">
+    <a href='/auth/google'>
+      <img src="/images/gSignin-logo.JPG">
+    </a>
+  </div>
+  <div class="header-bg">
+    <div id="preloader">
+      <div class="preloader"></div>
+    </div>
+    <div class="main-slider" id="main-slider">
+      <!--==pics==-->
+      <ul class="slides">
+        <li>
+          <img src="images/demo/bg-slide-01.jpg" alt="Slide Image" />
+        </li>
+        <li>
+          <img src="images/demo/eminem.jpg" alt="Slide Image 2" />
+        </li>
+        <li>
+          <img src="images/demo/timberwolves.jpg" alt="Slide Image 3" />
+        </li>
+        <li>
+          <img src="images/demo/vikings.jpg" alt="Slide Image 4" />
+        </li>
+        <li>
+          <img src="images/demo/wilds.jpg" alt="Slide Image 5" />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer navbar-fixed-bottom">
+    <div class="container">
+      <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
+    </div>
+  </footer>
 </div>

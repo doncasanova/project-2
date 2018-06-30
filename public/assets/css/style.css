@@ -3,6 +3,14 @@ h1 {
     color:orange
 }
 
+h3 {
+    color:rgb(51, 255, 0)
+}
+
+p {
+    color:rgb(226, 236, 223)
+}
+
 /* ------------------------------------------------------------------- */
 /* background transition */
 .backGround { 
@@ -11,7 +19,7 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    background-image: url
+   background-image: url("/images/demo/vikings.jpg")
  }
 
 /* ------------------------------------------------------------------- */

@@ -3,18 +3,9 @@
     "username": "root",
     "password": "",
     "database": "tickets_db",
-<<<<<<< HEAD
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mysql"
-=======
-    "host": "localhost",
-    "dialect": "mysql",
-    "dialectOptions": {
-      "socketPath": "/Applications/MAMP/tmp/mysql/mysql.sock"
-    },
-    "port": 3306
->>>>>>> 135a3d5b484b290b7fde301f0658f6e7ec906d97
   },
   "test": {
     "username": "root",

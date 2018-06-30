@@ -1,2 +1,85 @@
 
 
+<div class="container">
+    <div class="row">
+        <div class="col-4 justify-content-start border border-dark text-center">
+            {{!-- add handlebars loop here --}}
+            <H1>Users list of their tickets</H1>
+        </div>
+        <div class="col-4 ">
+
+
+        </div>
+
+        <div class="col-4 justify-content-end border border-dark text-center">
+            {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
+            <H1>Trade history here which may have items bought and items wanted</H1>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="container">
+</div>
+<div class="row justify-content-center">
+    <h1 class="text-center" id="logo">Tickets Galore
+        <sup>&reg;</sup>
+    </h1>
+</div>
+<div class="row justify-content-center">
+    <div class="text-center" id="tag-line">Buy Buy Buy</div>
+</div>
+<div class="row justify-content-center">
+    <div class="clickedOnGoogle " id="my-signin2"></div>
+</div>
+
+<div class="header-bg">
+    <div id="preloader">
+        <div class="preloader"></div>
+    </div>
+
+
+
+    <footer class="footer navbar-fixed-bottom">
+        {{! bottom section: user-specific info !}}
+        <div class="container">
+            <div class="row  justify-content-center border border-dark text-center">
+                <div class="col-12">
+                    <ul>
+                        <h1>user specific info: notifications from site, preferences </h1>
+                        <H3 class="text-center">Your Intrests</H3>
+                        {{#each user_interests}}
+                        <li>
+                            <p>
+                                <button data-user_interestsid="{{this.id}}" class="yourStuff btn btn-success">Devour</button>
+                                <label class=" p-2 rounded bg-dark text-white placeholder=" " disabled">
+                                    {{this.user_id}}</label>
+                            </p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button">Button</button>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Submit your ticket to sell here" aria-label="" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="button">Button</button>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Submit your bid here" aria-label="" aria-describedby="basic-addon1">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>

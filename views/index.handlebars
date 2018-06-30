@@ -1,78 +1,94 @@
 <div class="container">
+  <div class="row">
+    <div class="col-4 justify-content-start border border-dark text-center">
+      {{!-- add handlebars loop here --}}
+      <H1>Users list of their tickets</H1>
+    </div>
+    <div class="col-4 ">
 
 
-</div>
-
-{{! middle section: trade history order by popularity !}}
-<div class="container">
-
-
-</div>
-
-{{! bottom section: user-specific info !}}
-<div class="container">
-
-
-</div>
-
-<div class="container">
-</div>
-<div class="row justify-content-center">
-    <h1 class="text-center" id="logo">Tickets Galore
-        <sup>&reg;</sup>
-    </h1>
-</div>
-<div class="row justify-content-center">
-    <div class="text-center" id="tag-line">Buy Buy Buy</div>
-</div>
-<div class="row justify-content-center">
-    <div class="clickedOnGoogle " id="my-signin2"></div>
-</div>
-</div>
-<div class="header-bg">
-    <div id="preloader">
-        <div class="preloader"></div>
     </div>
 
+    <div class="col-4 justify-content-end border border-dark text-center">
+      {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
+      <H1>Trade history here which may have items bought and items wanted</H1>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="container">
+</div>
+<div class="row justify-content-center">
+  <h1 class="text-center" id="logo">Tickets Galore
+    <sup>&reg;</sup>
+  </h1>
+</div>
+<div class="row justify-content-center">
+  <div class="text-center" id="tag-line">Buy Buy Buy</div>
+</div>
+<div class="row justify-content-center">
+  <div class="clickedOnGoogle " id="my-signin2"></div>
+</div>
+
+<div class="header-bg">
+  <div id="preloader">
+    <div class="preloader"></div>
+  </div>
+
+ 
+
   <footer class="footer navbar-fixed-bottom">
+ {{! bottom section: user-specific info !}}
+  <div class="container">
+    <div class="row  justify-content-center border border-dark text-center">
+      <div class="col-4">
+        <h1>user specific info: notifications from site, preferences </h1>
+      </div>
+    </div>
+  </div>
+
+
     <div class="container">
       <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
     </div>
-</footer>
+  </footer>
 </div>
 
 
 <head>
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
 </head>
 
 
 <script>
-    function onSuccess(googleUser) {
-        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-        console.log(error);
-    }
-    function renderButton() {
-        gapi.signin2.render('my-signin2', {
-            'scope': 'profile email',
-            'width': 240,
-            'height': 50,
-            'longtitle': true,
-            'theme': 'dark',
-            'onsuccess': onSuccess,
-            'onfailure': onFailure
-        });
-    }
+  function onSuccess(googleUser) {
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+  }
+  function onFailure(error) {
+    console.log(error);
+  }
+  function renderButton() {
+    gapi.signin2.render('my-signin2', {
+      'scope': 'profile email',
+      'width': 240,
+      'height': 50,
+      'longtitle': true,
+      'theme': 'dark',
+      'onsuccess': onSuccess,
+      'onfailure': onFailure
+    });
+  }
 </script>
 
 <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script type='text/javascript'>
-    function init({ CLIENT_ID }) {
-        gapi.load('auth2', function () { });
-    }
+  function init({ CLIENT_ID }) {
+    gapi.load('auth2', function () { });
+  }
 </script>
 
 

@@ -1,5 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const auth_controller = require('../controllers/auth-controller');
+const path = require('path');
 console.log(process.env.CLIENT_ID);
 
 module.exports = (app, passport) => {
@@ -23,7 +24,9 @@ module.exports = (app, passport) => {
       if (!auth_controller.userGetById) {
         auth_controller.userCreate(user);
       }
-      res.redirect('/');
+      //res.redirect('/');
+      res.sendFile(path.join(__dirname + '/test.html'));
+      //res.sendFile('../public/test.html');
     }
   );
 

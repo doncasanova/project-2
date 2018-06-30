@@ -17,39 +17,39 @@ module.exports = function(sequelize, DataTypes) {
       notEmpty: true
     },
 
-    season_start: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
+    // season_start: {
+    //   type: DataTypes.DATE,
+    //   allowNull: true
+    // },
 
-    season_end: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
+    // season_end: {
+    //   type: DataTypes.DATE,
+    //   allowNull: true
+    // },
 
     description: {
       type: DataTypes.TEXT
     },
 
-    rarity: {
-      type: DataTypes.ENUM('1', '2', '3'),
-      defaultValue: '2'
-    },
+    // rarity: {
+    //   type: DataTypes.ENUM('1', '2', '3'),
+    //   defaultValue: '2'
+    // },
 
-    popularity: {
-      type: DataTypes.ENUM('1', '2', '3'),
-      defaultValue: '2'
-    },
+    // popularity: {
+    //   type: DataTypes.ENUM('1', '2', '3'),
+    //   defaultValue: '2'
+    // },
 
     price: {
-      type: DataTypes.ENUM('1', '2', '3'),
-      defaultValue: '2'
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: true
     },
 
-    period: {
-      type: DataTypes.ENUM('1', '2', '3'),
-      defaultValue: '2'
-    }
+    // period: {
+    //   type: DataTypes.ENUM('1', '2', '3'),
+    //   defaultValue: '2'
+    // }
   });
 
   Ticket.associate = function(models) {

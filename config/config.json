@@ -1,13 +1,8 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "root",
-    "database": "blogger",
-=======
-    "password": "",
     "database": "tickets_db",
->>>>>>> 3c0734c7abee7ed2e855fea9769cf4047183ba11
     "host": "127.0.0.1",
     "port": 6603,
     "dialect": "mysql"

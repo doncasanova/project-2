@@ -16,7 +16,7 @@ function configFile() {
     fs.writeFileSync('./config/config.json', cfgContent);
     console.log('config file after writeFile \n', cfgContent);
   } catch (error) {
-      throw new(error);
+      throw error;
   }
 }
 

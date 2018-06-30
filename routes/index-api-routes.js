@@ -1,14 +1,15 @@
 var index_api_controller = require('../controllers/index-api-controller');
+var express = require('express');
+var router = express.Router();
 
-module.exports = function(app) {
-  
-  app.get('/api/tickets', index_api_controller.ticketsAll );
+router.get('/api/tickets', index_api_controller.ticketsAll);
 
-  app.post('/api/tickets', index_api_controller.ticketCreate);
+router.post('/api/tickets', index_api_controller.ticketCreate);
 
-  app.get('/api/tickets/:id', index_api_controller.ticketById);
+router.get('/api/tickets/:id', index_api_controller.ticketById);
 
-  app.put('/api/tickets', index_api_controller.ticketUpdate);
-  
-  app.delete('/api/tickets/:id', index_api_controller.ticketDelete);
-}
+router.put('/api/tickets', index_api_controller.ticketUpdate);
+
+router.delete('/api/tickets/:id', index_api_controller.ticketDelete);
+
+module.exports = router;

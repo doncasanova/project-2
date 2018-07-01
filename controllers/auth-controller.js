@@ -3,6 +3,7 @@ var db = require('../models');
 var exports = module.exports = {};
 
 exports.userCreate = function (userinfo) {
+  console.log("inside userCreate")
   console.log(userinfo);
 
   db.user.create(userinfo)

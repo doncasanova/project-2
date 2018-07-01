@@ -22,5 +22,17 @@ p {
    background-image: url("/images/demo/vikings.jpg")
  }
 
+ .googleLogIn {
+    height: 60px;
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 10px
+ }
+
+ .logInContainer {
+    position: relative;
+    top: 150px;
+ }
 /* ------------------------------------------------------------------- */
 

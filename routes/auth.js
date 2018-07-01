@@ -1,7 +1,7 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const auth_controller = require('../controllers/auth-controller');
 const path = require('path');
-console.log(process.env.CLIENT_ID);
+// console.log(process.env.CLIENT_ID);
 
 module.exports = (app, passport) => {
 
@@ -12,8 +12,8 @@ module.exports = (app, passport) => {
     (req, res) => {
       // req.session.token = req.user.token;
       // console.log('user token ', req.user.token);
-      console.log('user profile ', req.user.profile);
-      console.log('user email ', req.user.profile.email);
+      // console.log('user profile ', req.user.profile);
+      // console.log('user email ', req.user.profile.email);
       var user = {
         first_name: req.user.profile.name.givenName,
         last_name: req.user.profile.name.familyName,
@@ -26,7 +26,6 @@ module.exports = (app, passport) => {
       }
       //res.redirect('/');
       res.sendFile(path.join(__dirname + '/test.html'));
-      //res.sendFile('../public/test.html');
     }
   );
 

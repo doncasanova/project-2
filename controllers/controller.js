@@ -9,7 +9,7 @@ var db = require("../models/index");
 
 // Sends to DOM
 router.get("/", function (req, res) {
-    console.log("inside user info get route")
+    
     user_interests.selectAll(function (data) {
       res.render('index', { user_interests: data });
     });

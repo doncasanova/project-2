@@ -57,16 +57,29 @@ p {
 
 .nameU {
     color: black;
+    font-size: 150%;
+    font-weight: bold;
 }
-
 .ticketTitle {
     color: black;
     background-color: rgb(21, 197, 21);
-    text-align: center
+    text-align: center;
+    font-size: 150%;
+    font-weight: bold;
 }
 .ticketInfo {
     color: black;
-    background-color: white
+    background-color: white;
+    margin-top: 2px;
+    padding: 2px
+}
+
+.availableTickets, .usersTickets {
+    color: black;
+    text-align: center;
+    margin-top: 2px;
+    padding: 2px
+    
 }
 /* 
 

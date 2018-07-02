@@ -21,7 +21,7 @@ function renderButton() {
 }
 
 // ----------------------------------------------------------------------
-// transition background
+// transition background images
 var images = [
     "https://blog.roblox.com/wp-content/uploads/2017/09/Sports-Event-Banner_1920x1080_v01.jpg",
     "images/demo/bg-slide-01.jpg",
@@ -55,7 +55,7 @@ function changeBackground() {
 
 setInterval(changeBackground, 5000);
 // ---------------------------------------------------------------------------------------
-
+// Loads images into modal for preference seletion 
 $(".test1").on("click", function (logoImage) {
     var logoImage = [
         "/images/pref_imgs/vikings.png",
@@ -88,7 +88,8 @@ $(".test1").on("click", function (logoImage) {
     }
 
 });
-
+// -------------------------------------------------------------------------------------
+// function for speak voice
 function startDictation() {
 
     if (window.hasOwnProperty('webkitSpeechRecognition')) {

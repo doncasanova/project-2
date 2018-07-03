@@ -1,11 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
     "database": "tickets_db",
-    "host": "127.0.0.1",
-    "port": 6603,
-    "dialect": "mysql"
+    "port": 3306,
+    "dialect": "mysql",
+    "username": "root"
   },
   "test": {
     "username": "root",

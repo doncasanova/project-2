@@ -3,8 +3,12 @@ const Users = require('../controllers/user-data');
 //const express = require('express');
 //const session = require('express-session');
 const path = require('path');
+<<<<<<< HEAD
 //console.log(process.env.CLIENT_ID);
 //var sessionstorage = require('sessionstorage');
+=======
+// console.log(process.env.CLIENT_ID);
+>>>>>>> 1e7ec3d340b7977f6627bcb355511aa209c8f887
 
 module.exports = (app, passport) => {
 
@@ -14,16 +18,23 @@ module.exports = (app, passport) => {
     }), (req, res) => {
       // req.session.token = req.user.token;
       // console.log('user token ', req.user.token);
+<<<<<<< HEAD
       console.log('user profile ', req.user.profile.displayName);
       //console.log('user email ', req.user.profile.email);
 
       var userInfo = {
+=======
+      // console.log('user profile ', req.user.profile);
+      // console.log('user email ', req.user.profile.email);
+      var user = {
+>>>>>>> 1e7ec3d340b7977f6627bcb355511aa209c8f887
         first_name: req.user.profile.name.givenName,
         last_name: req.user.profile.name.familyName,
         email: req.user.profile.email,
         user_identity: req.user.profile.id, 
         displayName: req.user.profile.displayName
       }
+<<<<<<< HEAD
 
       // sessionstorage.setItem('email', userInfo.email);
       // seesionstorage.setItem('user_identity', userInfo.user_identity);
@@ -81,6 +92,10 @@ module.exports = (app, passport) => {
       //router.get('/tickets', (req, res) => tickets_controller.tickets(req, res));
       //router.get('/api/tickets', (req, res) => tickets_api_controller.ticketsAll(req, res));
       //res.sendFile(path.join(__dirname + '/test.html'));
+=======
+      //res.redirect('/');
+      res.sendFile(path.join(__dirname + '/test.html'));
+>>>>>>> 1e7ec3d340b7977f6627bcb355511aa209c8f887
     }
   );
 

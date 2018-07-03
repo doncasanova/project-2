@@ -6,8 +6,15 @@ var exports = module.exports = {};
 
 exports.tickets = function (req, res) {
   
-  var query = {};
+  console.log('Inside tickets web controller :', req.session.displayName);
+  var user = {
+    "user_id": req.session.user_id,
+    "email": req.session.email,
+    "displayName": req.session.email,
+    "user_identification": req.session.user_identification
+  }
 
+  var query = {};
   // check if "get by id" kind
   if (req.query.ticket_id) {
     query.ticket_id = req.query.ticket_id;
@@ -18,6 +25,12 @@ exports.tickets = function (req, res) {
     include: [db.user] }) 
   .then(function (dbTickets) {
     //console.log("Tickets page - ticket.findAll \n", dbTickets);
+    var ts = [
+      {"user": user}, 
+      {"allT": dbTickets}
+    ];
+
+    var tts = [user, dbTickets];
 
     var hbsObj = {
       tickets: dbTickets

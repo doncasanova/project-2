@@ -16,6 +16,34 @@ $(function() {
   //     //$('#ticket-list')
   //   })
   // })
+  // function load() {
+  //   var user = {
+  //     "user_id": '<%= Session["user_id"] %>',
+  //     "email": '<%= Session["email"] %>',
+  //     "displayName": '<%= Session["displayName"] %>',
+  //     "user_identification": '<%= Session["user_identification"] %>'
+  //   };
+
+  //   $('.displayName').Text(user.displayName);
+
+  // }
+
+  // // window.onload = load;
+
+  // var user = {
+  //   "user_id": '<%= Session["user_id"] %>',
+  //   "email": '<%= Session["email"] %>',
+  //   "displayName": '<%= Session["displayName"] %>',
+  //   "user_identification": '<%= Session["user_identification"] %>'
+  // };
+
+
+  // console.log("inside tickets ", user);
+
+  // $('.displayName').Text(user.displayName);
+
+  //console.log(tickets[1].tickets.ticket_name);
+  //console.log(tickets[0].user.displayName);
 
   $(".create-ticket-form").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.

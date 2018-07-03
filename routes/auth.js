@@ -1,5 +1,7 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const Users = require('../controllers/user-data');
+const querystring = require('querystring');
+const url = require('url');
 //const express = require('express');
 //const session = require('express-session');
 const path = require('path');
@@ -31,7 +33,6 @@ module.exports = (app, passport) => {
       console.log(userInfo);
       // check if user alreay in database
       //app.use(session({secret: 'super duper hidden', cookie: {maxAge: 60000}}));
-      var sessionData = req.session;
       var users = new Users();
 
       users.getUserByUserIdentity(req.user.profile.id)
@@ -42,41 +43,48 @@ module.exports = (app, passport) => {
                 if (!users.userSelected) {
                   users.createUser(userInfo)
                     .then(dbUser => {
-                      setSessionInfo(sessionData, users.userInserted);
-                      //sessionstorage.setItem('user_id', dbUser.user_id);
-                      // users.setUserToSessionStorage({
-                      //   'user_id': dbUser.user_id,
-                      //   'displayName': dbUser.displayName,
-                      //   'email': dbUser.email,
-                      //   'user_identity': dbUser.user_identity
-                      // });
+                      //setSessionInfo(req.session, users.userInserted);
+                      req.session.user_id = users.userInserted.user_id;
+                      req.session.email = users.userInserted.email.toString();
+                      req.session.user_identity = users.userInserted.user_identity.toString();                  
+                      req.session.displayName = users.userInserted.displayName.toString();
                     })
                 } 
                 else{
-                  setSessionInfo(sessionData, users.userSelected);
-                  //sessionstorage.setItem('user_id', dbUser.user_id);
-                  // users.setUserToSessionStorage({
-                  //   'user_id': dbUser.user_id,
-                  //   'displayName': dbUser.displayName,
-                  //   'email': dbUser.email,
-                  //   'user_identity': dbUser.user_identity
-                  // });
+                  //setSessionInfo(req.session, users.userSelected);
+                  req.session.user_id = users.userSelected.user_id;
+                  req.session.email = users.userSelected.email.toString();
+                  req.session.user_identity = users.userSelected.user_identity.toString();                  
+                  req.session.displayName = users.userSelected.displayName.toString();
                 }
               })
           } else{
-            setSessionInfo(sessionData, users.userSelected);
-            //sessionstorage.setItem('user_id', dbUser.user_id);
-            // users.setUserToSessionStorage({
-            //   'user_id': dbUser.user_id,
-            //   'displayName': dbUser.displayName,
-            //   'email': dbUser.email,
-            //   'user_identity': dbUser.user_identity
-            // });
+            //setSessionInfo(req.session, users.userSelected);
+            req.session.user_id = users.userSelected.user_id;
+            req.session.email = users.userSelected.email.toString();
+            req.session.user_identity = users.userSelected.user_identity.toString();                  
+            req.session.displayName = users.userSelected.displayName.toString();
           }
-        })
+        }).then(() => req.session)
+          .then(reqs =>  {
+            console.log("Inside Auth: ", reqs.user_id, req.session.displayName, 
+              req.session.email, req.session.user_identity);
+            return req.session;
+          })
+          .then (reqs => {
+            res.redirect(url.format({
+              pathname: '/tickets',
+              query: {
+                "user_id": reqs.user_id,
+                "email": reqs.email,
+                "displayName": reqs.displayName,
+                "user_identification": reqs.user_identification
+            }}));
+          });
+
 
       //console.log('user_id from sessionstorage \n', sessionstorage.getItem('user_id'));
-      res.redirect('/tickets');
+      //res.redirect('/tickets');
       //router.get('/tickets', (req, res) => tickets_controller.tickets(req, res));
       //router.get('/api/tickets', (req, res) => tickets_api_controller.ticketsAll(req, res));
       //res.sendFile(path.join(__dirname + '/test.html'));
@@ -165,13 +173,13 @@ module.exports = (app, passport) => {
     res.redirect('/signin');
   }
 
-  function setSessionInfo(sessionData, dataObj) {
-    sessionData.user_id = dataObj.user_id;
-    sessionData.email = dataObj.email.toString();
-    sessionData.user_identity = dataObj.user_identity.toString();                  
-    sessionData.displayName = dataObj.displayName.toString();
-    console.log("sessionData: \n", sessionData);
-    //return sessionData;
+  function setSessionInfo(sess, userInfo) {
+    sess.user_id = userInfo.user_id;
+    sess.email = userInfo.email.toString();
+    sess.user_identity = userInfo.user_identity.toString();                  
+    sess.displayName = userInfo.displayName.toString();
+    console.log("session data: \n", sess.user_id, sess.email, sess.user_identity, sess.displayName);
+    return sess;
   }
 
 

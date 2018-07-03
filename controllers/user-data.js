@@ -1,5 +1,6 @@
 const db = require('../models');
 const {table} = require('table');
+const sessionStorage = require('sessionstorage');
 
 class Users {
   constructor() {
@@ -39,8 +40,12 @@ class Users {
         }})
       .then (dbUser => {
         if (dbUser) {
-        console.log("getUserById in user-data.js \n", dbUser.user_id);
-        return this.userSelected = dbUser;
+        //console.log("getUserByIdentity in user-data.js \n", dbUser.user_id);
+        //console.log("getUserByIdentity in user-data.js \n", dbUser.user);
+        //console.log("getUserByIdentity in user-data.js \n", dbUser.user[0]);
+        console.log("getUserByIdentity dbUser in user-data.js \n", dbUser);
+        this.userSelected = dbUser;
+        return dbUser;
         }
         else 
           return dbUser;
@@ -60,8 +65,15 @@ class Users {
         }})
       .then (dbUser => {
         if (dbUser) {
-        console.log("getUserByEmail in user-data.js \n", dbUser.user_id);
-        return this.userSelected = dbUser;
+          
+          //console.log("getUserByIdentity in user-data.js \n", dbUser.user_id);
+        //console.log("getUserByIdentity in user-data.js \n", dbUser.user);
+        //console.log("getUserByIdentity in user-data.js \n", dbUser.user[0]);
+          //console.log("getUserByEmail in user-data.js \n", dbUser.user.user_id);
+          console.log("getUserByEmail in user-data.js \n", dbUser);
+          this.userSelected = dbUser;
+          console.log(this.userSelected.email);
+          return dbUser;
         }
         else 
           return dbUser;
@@ -77,13 +89,15 @@ class Users {
     return db.user.create(userInfo)
       .then(dbUser => {
         console.log("createUser in user-data.js \n", dbUser.user_id);
-        return this.userInserted = dbUser});
+        this.userInserted = dbUser;
+        return dbUser;
+      });
   };
   
   setUserToSessionStorage(userInfo) {
     sessionStorage.clear();
-    sessionStorage.setItem('first_name', userInfo.first_name);
-    sessionStorage.setItem('last_name', userInfo.last_name);
+    sessionStorage.setItem('user_id', userInfo.user_id);
+    sessionStorage.setItem('displayName', userInfo.displayName);
     sessionStorage.setItem('email', userInfo.email);
     sessionStorage.setItem('user_identity', userInfo.user_identity);
     //sessionStorage.setItem('definitions', JSON.stringify(definitions));
@@ -91,8 +105,8 @@ class Users {
 
   getUserFromSessionStorage() {
     return {
-      'first_name': sessionStorage.getItem('first_name'),
-      'last_name': sessionStorage.getItem('last_name'),
+      'user_id': sessionStorage.getItem('user_id'),
+      'displayName': sessionStorage.getItem('displayName'),     
       'email': sessionStorage.getItem('email'),
       'user_identity': sessionStorage.getItem('user_identity')
       //definitions: JSON.parse(sessionStorage.getItem('definitions')),

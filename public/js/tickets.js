@@ -8,13 +8,14 @@ $(function() {
 
   //     }
   // });
-  $(window).load(function() {
-    $.ajax("/api/tickets", {
-      type: "GET"
-    }).then(function(response) {
-      $('#ticket-list')
-    })
-  })
+  // $(window).load(function() {
+  //   $.ajax("/api/tickets", {
+  //     type: "GET"
+  //   }).then(function(tickets) {
+  //     return tickets;
+  //     //$('#ticket-list')
+  //   })
+  // })
 
   $(".create-ticket-form").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
@@ -34,8 +35,7 @@ $(function() {
     $.ajax("/api/tickets", {
       type: "POST",
       data: newTicket
-    }).then(
-      function() {
+    }).then(function() {
         console.log("created new ticket");
         // Reload the page to get the updated list
         location.reload();

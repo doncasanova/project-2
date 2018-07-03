@@ -2,9 +2,16 @@ var tickets_api_controller = require('../controllers/tickets-api-controller');
 var express = require('express');
 var router = express.Router();
 
-router.get('/api/tickets', (req, res) => tickets_api_controller.ticketsAll(req, res));
 
-router.post('/api/tickets', (req, res) => tickets_api_controller.ticketCreate(req, res));
+router.get('/api/tickets', (req, res) => {
+  //console.log("session stored \n", req.session.user_id, req.session.displayName);
+  tickets_api_controller.ticketsAll(req, res);
+});
+
+router.post('/api/tickets', (req, res) => {
+  //console.log("session stored \n", req.session.user_id, req.session.displayName);
+  tickets_api_controller.ticketCreate(req, res)
+});
 
 router.get('/api/tickets/:id', (req, res) => tickets_api_controller.ticketById(req, res));
 

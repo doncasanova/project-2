@@ -5,12 +5,16 @@ const express = require("express"),
   passport = require("passport"),
   path = require('path'),
   session = require('express-session');
+  //sessionstorage = require('sessionstorage'),
+  //sessionstore = require('sessionstore');
+  
 
 // Sets up the Express App
 var app = express();
 var PORT = process.env.PORT || 8080;
 
-app.use(session({secret: 'superduperhidden', cookie: {maxAge: 60000}}));
+//app.use(session({secret: 'superduperhidden', cookie: {maxAge: 60000}}));
+//app.use(express.session({store: sessionstore.createSessionStore()}));
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));

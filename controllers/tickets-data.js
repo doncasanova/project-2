@@ -1,6 +1,6 @@
 const db = require('../models');
 const {table} = require('table');
-var Users = require('../user-data');
+var Users = require('./user-data');
 
 class Tickets {
   constructor() {
@@ -153,6 +153,19 @@ class Tickets {
         process.exit(1);
       })
   }
+
+  updateTicketUserId(updateObj, TicketId) {
+    db.ticket.update(
+      updateObj, 
+      {
+        where: {
+          ticket_id: TicketId
+        }
+      }).then(function(dbTicket) {
+        console.log(dbTicket);
+        return dbTicket;
+      });
+    };
 }
 
 module.exports = Tickets;

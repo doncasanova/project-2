@@ -1,9 +1,10 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const Users = require('../controllers/user-data');
-const express = require('express');
-const session = require('express-session');
+//const express = require('express');
+//const session = require('express-session');
 const path = require('path');
 //console.log(process.env.CLIENT_ID);
+//var sessionstorage = require('sessionstorage');
 
 module.exports = (app, passport) => {
 
@@ -24,6 +25,10 @@ module.exports = (app, passport) => {
         displayName: req.user.profile.displayName
       }
 
+      // sessionstorage.setItem('email', userInfo.email);
+      // seesionstorage.setItem('user_identity', userInfo.user_identity);
+      // sessionstorage.setItem('displayName', userInfo.displayName);
+
       console.log(userInfo);
       // check if user alreay in database
       //app.use(session({secret: 'super duper hidden', cookie: {maxAge: 60000}}));
@@ -39,17 +44,39 @@ module.exports = (app, passport) => {
                   users.createUser(userInfo)
                     .then(dbUser => {
                       setSessionInfo(sessionData, users.userInserted);
+                      //sessionstorage.setItem('user_id', dbUser.user_id);
+                      // users.setUserToSessionStorage({
+                      //   'user_id': dbUser.user_id,
+                      //   'displayName': dbUser.displayName,
+                      //   'email': dbUser.email,
+                      //   'user_identity': dbUser.user_identity
+                      // });
                     })
                 } 
                 else{
                   setSessionInfo(sessionData, users.userSelected);
+                  //sessionstorage.setItem('user_id', dbUser.user_id);
+                  // users.setUserToSessionStorage({
+                  //   'user_id': dbUser.user_id,
+                  //   'displayName': dbUser.displayName,
+                  //   'email': dbUser.email,
+                  //   'user_identity': dbUser.user_identity
+                  // });
                 }
               })
           } else{
             setSessionInfo(sessionData, users.userSelected);
+            //sessionstorage.setItem('user_id', dbUser.user_id);
+            // users.setUserToSessionStorage({
+            //   'user_id': dbUser.user_id,
+            //   'displayName': dbUser.displayName,
+            //   'email': dbUser.email,
+            //   'user_identity': dbUser.user_identity
+            // });
           }
         })
 
+      //console.log('user_id from sessionstorage \n', sessionstorage.getItem('user_id'));
       res.redirect('/tickets');
       //router.get('/tickets', (req, res) => tickets_controller.tickets(req, res));
       //router.get('/api/tickets', (req, res) => tickets_api_controller.ticketsAll(req, res));
@@ -145,6 +172,7 @@ module.exports = (app, passport) => {
     sessionData.user_identity = dataObj.user_identity.toString();                  
     sessionData.displayName = dataObj.displayName.toString();
     console.log("sessionData: \n", sessionData);
+    //return sessionData;
   }
 
 

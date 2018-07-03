@@ -19,7 +19,6 @@ function renderButton() {
         'onfailure': onFailure
     });
 }
-
 // ----------------------------------------------------------------------
 // transition background images
 var images = [
@@ -85,9 +84,11 @@ $(".test1").on("click", function (logoImage) {
 
         $(".test123").append(`<div class="img_container userPreferenceLogo"><img src="${logoImage[i]}" alt="${logoImageName[i]}" class="image"> <div class="middle">  <div class="text">${logoImageName[i]}</div></div></div>`)
 
+        $("#menu").append(`<a><li><img src="${logoImage[i]}" alt="${logoImageName[i]}"height="10%" width="10%"</li></a>`)
     }
 
 });
+
 // -------------------------------------------------------------------------------------
 // function for speak voice
 function startDictation() {
@@ -115,3 +116,5 @@ function startDictation() {
 
     }
   }
+
+//   

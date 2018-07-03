@@ -13,12 +13,6 @@ module.exports = function(app) {
     });
   });
 
-// test added by don casanova
-  app.get("/", function(req, res) {
-  
-    res.render("index");
-  });
-
 
 }
 

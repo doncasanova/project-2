@@ -1,17 +1,34 @@
 $(function() {
 
+  // $('#ticket-list').load("/api/tickets", function(response, status, xhr){
+  //     if (status == "success") {
+  //       response.data.tickets
+  //     }
+  //     if (status == "error") {
+
+  //     }
+  // });
+  $(window).load(function() {
+    $.ajax("/api/tickets", {
+      type: "GET"
+    }).then(function(response) {
+      $('#ticket-list')
+    })
+  })
+
   $(".create-ticket-form").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
     var newTicket = {
-      email: $('#email').val90.trim();
+      email: $('#email').val().trim(),
       ticket_name: $("#ticket_name").val().trim(),
       location: $("#location").val().trim(),
-      season_start: $("#ticket_name").val().trim(),
-      season_end: $("#ticket_name").val().trim(),
-      price: $("#ticket_name").val().trim()
+      price: parseFloat($("#price").val().trim()),
+      description: $('#description').val().trim()
     };
+
+    console.log('new ticket to store \n', newTicket);
 
     // Send the POST request.
     $.ajax("/api/tickets", {
@@ -46,19 +63,6 @@ $(function() {
       }
     );
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

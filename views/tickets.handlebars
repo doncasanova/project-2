@@ -1,16 +1,20 @@
-<h1>Tickets available for purchace or trade</h1>
+<h3>Tickets available for purchace or trade</h3>
 
+<h4>There are {{tickets.length}} available tickets.</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" id="ticket-list">
+      <ul>
+        {{#each tickets}}
+            {{> tickets/ticket_item_partial}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
 
-<ul>
-  {{#each tickets}}
-    
-      {{> tickets/ticket-partial}}
-
-  {{/each}}
-</ul>
 
 <h2>Add a ticket</h2>
-
 <div class="container">
   <div class="row">
     <div class="col-md-12 ">
@@ -31,16 +35,12 @@
             <input type="text" id="location" name="location" placeholder="Enter a location" class="form-control-lg">
           </div>
           <div class="form-group">
-            <label class="form-control-label" for="season_start"></label>
-            <input type="text" id="season_start" name="season_start" placeholder="Enter season start date" class="form-control-lg">
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="season_end"></label>
-            <input type="text" id="season_end" name="season_end" placeholder="Enter season end date" class="form-control-lg">
-          </div>
-          <div class="form-group">
             <label class="form-control-label" for="price"></label>
             <input type="text" id="price" name="price" placeholder="Enter a ticket price" class="form-control-lg">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label" for="description"></label>
+            <input type="text" id="description" name="description" placeholder="Enter a ticket description" class="form-control-lg">
           </div>
         </fieldset>
         <button type="submit" class="btn btn-primary mb-3">Add</button>

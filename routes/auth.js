@@ -1,32 +1,59 @@
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
-const auth_controller = require('../controllers/auth-controller');
+const Users = require('../controllers/user-data');
+const express = require('express');
+const session = require('express-session');
 const path = require('path');
-console.log(process.env.CLIENT_ID);
+//console.log(process.env.CLIENT_ID);
 
 module.exports = (app, passport) => {
 
   app.get('/auth/google/callback',
     passport.authenticate('google', {
       failureRedirect: '/signin'
-    }),
-    (req, res) => {
+    }), (req, res) => {
       // req.session.token = req.user.token;
       // console.log('user token ', req.user.token);
-      console.log('user profile ', req.user.profile);
-      console.log('user email ', req.user.profile.email);
-      var user = {
+      console.log('user profile ', req.user.profile.displayName);
+      //console.log('user email ', req.user.profile.email);
+
+      var userInfo = {
         first_name: req.user.profile.name.givenName,
         last_name: req.user.profile.name.familyName,
         email: req.user.profile.email,
-        user_identity: req.user.profile.id
-      };
-
-      if (!auth_controller.userGetById) {
-        auth_controller.userCreate(user);
+        user_identity: req.user.profile.id, 
+        displayName: req.user.profile.displayName
       }
-      //res.redirect('/');
-      res.sendFile(path.join(__dirname + '/test.html'));
-      //res.sendFile('../public/test.html');
+
+      console.log(userInfo);
+      // check if user alreay in database
+      //app.use(session({secret: 'super duper hidden', cookie: {maxAge: 60000}}));
+      var sessionData = req.session;
+      var users = new Users();
+
+      users.getUserByUserIdentity(req.user.profile.id)
+        .then(dbUser => {
+          if (!users.userSelected) {
+            users.getUserByEmail(req.user.profile.eamil)
+              .then(dbUser => {
+                if (!users.userSelected) {
+                  users.createUser(userInfo)
+                    .then(dbUser => {
+                      setSessionInfo(sessionData, users.userInserted);
+                    })
+                } 
+                else{
+                  setSessionInfo(sessionData, users.userSelected);
+                }
+              })
+          } else{
+            setSessionInfo(sessionData, users.userSelected);
+          }
+        })
+
+      res.redirect('/tickets');
+      //router.get('/tickets', (req, res) => tickets_controller.tickets(req, res));
+      //router.get('/api/tickets', (req, res) => tickets_api_controller.ticketsAll(req, res));
+      //res.sendFile(path.join(__dirname + '/test.html'));
     }
   );
 
@@ -111,4 +138,14 @@ module.exports = (app, passport) => {
     }
     res.redirect('/signin');
   }
+
+  function setSessionInfo(sessionData, dataObj) {
+    sessionData.user_id = dataObj.user_id;
+    sessionData.email = dataObj.email.toString();
+    sessionData.user_identity = dataObj.user_identity.toString();                  
+    sessionData.displayName = dataObj.displayName.toString();
+    console.log("sessionData: \n", sessionData);
+  }
+
+
 };

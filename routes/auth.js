@@ -164,6 +164,7 @@ module.exports = (app, passport) => {
     }
     res.redirect('/signin');
   }
+<<<<<<< HEAD
 
   function setSessionInfo(sessionData, dataObj) {
     sessionData.user_id = dataObj.user_id;
@@ -176,3 +177,7 @@ module.exports = (app, passport) => {
 
 
 };
+=======
+};
+
+>>>>>>> don

@@ -8,20 +8,11 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true   
     },
 
-    event_type: {
-      type: DataTypes.STRING,
-      notEmpty: true
-    },
-
     event_name: {
       type: DataTypes.STRING,
       notEmpty: true
     }, 
 
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    }
   });
 
   return LookupEvent;

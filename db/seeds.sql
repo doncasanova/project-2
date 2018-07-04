@@ -11,3 +11,32 @@ INSERT into  pref_type (name) VALUES ('arts');
     // }
 
     */
+
+    insert into lookup_event (event_name) VALUES ('vikings');
+        insert into lookup_event (event_name) VALUES ('twins');
+        
+    insert into lookup_event (event_name) VALUES ('timberwolves');
+    
+    insert into lookup_event (event_name) VALUES ('wild');
+    
+    insert into lookup_event (event_name) VALUES ('united');
+            insert into lookup_event (event_name) VALUES ('saints');
+    
+    insert into lookup_event (event_name) VALUES ('lynx');
+        insert into lookup_event (event_name) VALUES ('gophers');
+
+
+
+     insert into lookup_event (event_name) VALUES ('vikings');
+        insert into lookup_event (event_name) VALUES ('twins');
+        
+    insert into lookup_event (event_name) VALUES ('timberwolves');
+    
+    insert into lookup_event (event_name) VALUES ('wild');
+    
+    insert into lookup_event (event_name) VALUES ('united');
+            insert into lookup_event (event_name) VALUES ('saints');
+    
+    insert into lookup_event (event_name) VALUES ('lynx');
+        insert into lookup_event (event_name) VALUES ('gophers');
+        

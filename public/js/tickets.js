@@ -89,7 +89,8 @@ function changeBackground() {
 setInterval(changeBackground, 5000);
 // ---------------------------------------------------------------------------------------
 // Loads images into modal for preference seletion 
-$(".test1").on("click", function (logoImage) {
+$(".test1").on("click", function () {
+  console.log("hello here we are")
   var logoImage = [
       "/images/pref_imgs/vikings.png",
       "/images/pref_imgs/twins.png",

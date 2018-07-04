@@ -43,8 +43,6 @@ CREATE TABLE `ticket_trades` (
   CONSTRAINT `ticket_trades_ibfk_2` FOREIGN KEY (`ticket_to_bid_id`) REFERENCES `tickets` (`ticket_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) DEFAULT NULL,

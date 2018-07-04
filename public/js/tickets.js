@@ -1,6 +1,19 @@
-$(function() {
 
-  
+var imageArray = []
+
+var logoImage = [
+  "/images/pref_imgs/vikings.png",
+  "/images/pref_imgs/twins.png",
+  "/images/pref_imgs/wolves.png",
+  "/images/pref_imgs/wild.png",
+  "/images/pref_imgs/united.png",
+  "/images/pref_imgs/saints.png",
+  "/images/pref_imgs/lynx.png",
+  "/images/pref_imgs/gophers.png"
+
+]
+
+$(function() {
   $(".create-ticket-form").on("submit", function(event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
@@ -89,8 +102,7 @@ function changeBackground() {
 setInterval(changeBackground, 5000);
 // ---------------------------------------------------------------------------------------
 // Loads images into modal for preference seletion 
-$(".test1").on("click", function () {
-  console.log("hello here we are")
+$(".test1").on("click", function (logoImage) {
   var logoImage = [
       "/images/pref_imgs/vikings.png",
       "/images/pref_imgs/twins.png",
@@ -116,14 +128,33 @@ $(".test1").on("click", function () {
   $("#menu").empty();
   $(".test123").empty();
   for (var i = 0; i < logoImage.length; i++) {
-
-      $(".test123").append(`<div class="img_container userPreferenceLogo"><img src="${logoImage[i]}" alt="${logoImageName[i]}" class="image"> <div class="middle">  <div class="text">${logoImageName[i]}</div></div></div>`)
-
-     
-      $("#menu").append(`<a><li><img src="${logoImage[i]}" alt="${logoImageName[i]}"height="10%" width="10%"</li></a>`)
+      var imageClass = ("imageClass"+[i])
+      $(".test123").append(`<div class="img_container userPreferenceLogo"><a href= ><img src="${logoImage[i]}" alt="${logoImageName[i]}" id = "${imageClass}" class="image"></a><div class="middle"><div class="text">${logoImageName[i]}</div></div></div>`)
   }
 
+  $("#imageClass0, #imageClass1, #imageClass2, #imageClass3, #imageClass4, #imageClass5, #imageClass6, #imageClass7").on("click", function(){
+
+    $("#menu").append(`<li><img src="/images/pref_imgs/vikings.png" alt="${logoImageName[i]}"height="10%" width="10%"</li>`)
+  });
+
 });
+
+//--------------------------------------------------------------------------------------
+//
+
+// $(".clickImagePref").on("document", function () {
+//   alert("yes")
+// });
+//--------------------------------------------------------------------------------------
+//renders the preference images to the div 
+
+// $("#prefRendToDiv").on("click", function () {
+//   alert("yes no")
+// $("#menu").append(`<li><img src="${logoImage[i]}" alt="${logoImageName[i]}"height="10%" width="10%"</li>`)
+// });
+
+
+
 
 // -------------------------------------------------------------------------------------
 // function for speak voice
@@ -154,7 +185,6 @@ function startDictation() {
 }
 
 $(document).ready(function() {
-  console.log("hello out there")
   var token = '752SKMBHJW64XM6OUEMY';
   var $events = $("#events");
   
@@ -163,7 +193,7 @@ $(document).ready(function() {
           var s = "<ul class='eventList'>";
           for(var i=0;i<res.events.length;i++) {
               var event = res.events[i];
-              console.log(event);
+              // console.log(event);
               s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
           }
           s += "</ul>";

@@ -33,7 +33,8 @@ exports.tickets = function (req, res) {
     var tts = [user, dbTickets];
 
     var hbsObj = {
-      tickets: dbTickets
+      tickets: dbTickets,
+      user: user
     };
 
     //console.log("Tickets page - ready hlbobj \n", hbsObj);

@@ -7,8 +7,9 @@
       <sup>&reg;</sup>
     </h1>
   </form>
-  <button type="button" class="btn btn-success">My List</button>
-  <button type="button" class="btn btn-success">Wish List</button>
+ <button type="button" id = "pbutton" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Update Preferences
+      </button>
   <form id="labnol" class="form-inline" method="get" action="https://www.google.com/search">
     <input class="form-control mr-sm-2" type="text" name="q" id="transcript" placeholder="Search / Speak">
     <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif">
@@ -19,9 +20,6 @@
 <div class="container prefDiv ">
   <div class="row justify-content-start m-2 p-2 border border-dark">
     <div class="col-12">
-      <button type="button" class="btn btn-primary test1" data-toggle="modal" data-target="#myModal">
-        Update Preferences
-      </button>
       <ul id="menu">
       </ul>
     </div>
@@ -196,10 +194,10 @@
     <div class="modal-content">
 
       <!-- Modal Header -->
-      <div class="modal-header">
+      {{!-- <div class="modal-header">
         <h4 class="modal-title">Your Preferences</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
+      </div> --}}
 
       <!-- Modal body -->
       <div class="modal-body">
@@ -218,7 +216,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" id = "prefRendToDiv" class="btn btn-danger" data-dismiss="modal">Submit</button>
+        <button id = "submit" class="btn btn-danger" data-dismiss="modal">Submit</button>
       </div>
 
     </div>

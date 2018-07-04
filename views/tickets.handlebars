@@ -1,185 +1,226 @@
-<header>{{log this}}
-        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-          <a class="navbar-brand" href="#">Ticket Galore</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        
-          <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/api/tickets">All tickets</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link displayName">{{user.displayName}}</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-    </header>
-		<div class="container text-center">
-    	<h2 class="text-center mt-10 mb-7">!</h2>
-		</div>
+<nav class="navbar border border-dark navStyle">
 
+  <a class="nav-link displayName">{{user.displayName}}</a>
 
-<div class="container">
-<div class="row .container-fluid">
-  <div class="col-md-12 border ">
-
-  </div>
-</div>
-</div>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-4 justify-content-start border border-dark text-center">
-            {{!-- add handlebars loop here --}}
-            <H1>Users list of their tickets</H1>
-        </div>
-        <div class="col-4 ">
-
-
-        </div>
-
-        <div class="col-4 justify-content-end border border-dark text-center">
-            {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
-            <H1>Trade history here which may have items bought and items wanted</H1>
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="container">
-</div>
-<div class="row justify-content-center">
-    <h1 class="text-center" id="logo">Tickets Galore
-        <sup>&reg;</sup>
+  <form class "form-control mr-sm-2 siteLogo " action="" placeholder="Site Logo">
+    <h1>Tickets Galore
+      <sup>&reg;</sup>
     </h1>
-</div>
-<div class="row justify-content-center">
-    <div class="text-center" id="tag-line">Buy Buy Buy</div>
-</div>
-<div class="row justify-content-center">
-    <div class="clickedOnGoogle " id="my-signin2"></div>
-</div>
+  </form>
+  <button type="button" class="btn btn-success">My List</button>
+  <button type="button" class="btn btn-success">Wish List</button>
+  <form id="labnol" class="form-inline" method="get" action="https://www.google.com/search">
+    <input class="form-control mr-sm-2" type="text" name="q" id="transcript" placeholder="Search / Speak">
+    <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
 
-<div class="header-bg">
-    <div id="preloader">
-        <div class="preloader"></div>
-    </div>
-
-
-
-
-
-<h3>Tickets available for purchace or trade</h3>
-
-<h4>There are {{tickets.length}} available tickets.</h4>
-<div class="container">
-  <div class="row lead">
-    <div class="col-md-2">Ticket name</div>
-    <div class="col-md-2">Location</div>
-    <div class="col-md-2">Description</div>
-    <div class="col-md-2">Price</div>
-    <div class="col-md-2">Owner</div>
-    <div class="col-md-2"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-12" id="ticket-list">
-      <ul>
-        {{#each tickets}}
-            {{> tickets/ticket_item_partial}}
-        {{/each}}
+<div class="container prefDiv ">
+  <div class="row justify-content-start m-2 p-2 border border-dark">
+    <div class="col-12">
+      <button type="button" class="btn btn-primary test1" data-toggle="modal" data-target="#myModal">
+        Update Preferences
+      </button>
+      <ul id="menu">
       </ul>
     </div>
   </div>
 </div>
+<div class="container text-center">
+  <h2 class="text-center mt-10 mb-7">!</h2>
+</div>
 
 
-<h2>Add a ticket</h2>
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 ">
-
-      <form class="create-ticket-form">
-        <fieldset>
-          <legend></legend>
-          <div class="form-group">
-            <label class="form-control-label" for="email"></label>
-            <input type="text" id="email" name="email" placeholder="Enter your email address" class="form-control-lg">
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="ticket_name"></label>
-            <input type="text" id="ticket_name" name="ticket_name" placeholder="Enter a ticket name" class="form-control-lg">
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="location"></label>
-            <input type="text" id="location" name="location" placeholder="Enter a location" class="form-control-lg">
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="price"></label>
-            <input type="text" id="price" name="price" placeholder="Enter a ticket price" class="form-control-lg">
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" for="description"></label>
-            <input type="text" id="description" name="description" placeholder="Enter a ticket description" class="form-control-lg">
-          </div>
-        </fieldset>
-        <button type="submit" class="btn btn-primary mb-3">Add</button>
-      </form>
-      <label>Enter a ticket you want to store and click the "Add" button</label>
+  <div class="row .container-fluid">
+    <div class="col-md-12 border ">
 
     </div>
   </div>
 </div>
 
 
+<div class="container">
+  <div class="row">
+    <div class="col-4 justify-content-start border border-dark text-center">
+      {{!-- add handlebars loop here --}}
+      <H1>Users list of their tickets</H1>
+    </div>
+    <div class="col-4 ">
 
 
-<footer class="footer navbar-fixed-bottom">
-        {{! bottom section: user-specific info !}}
-        <div class="container">
-            <div class="row  justify-content-center border border-dark text-center">
-                <div class="col-12">
-                    <ul>
-                        <h1>user specific info: notifications from site, preferences </h1>
-                        <H3 class="text-center">Your Intrests</H3>
-                        {{#each user_interests}}
-                        <li>
-                            <p>
-                                <button data-user_interestsid="{{this.id}}" class="yourStuff btn btn-success">Devour</button>
-                                <label class=" p-2 rounded bg-dark text-white placeholder=" " disabled">
-                                    {{this.user_id}}</label>
-                            </p>
-                        </li>
-                        {{/each}}
-                    </ul>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary" type="button">Button</button>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Submit your ticket to sell here" aria-label="" aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary" type="button">Button</button>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Submit your bid here" aria-label="" aria-describedby="basic-addon1">
-                    </div>
+    </div>
 
-                </div>
+    <div class="col-4 justify-content-end border border-dark text-center">
+      {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
+      <H1>Trade history here which may have items bought and items wanted</H1>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="container">
+</div>
+<div class="row justify-content-center">
+  <h1 class="text-center" id="logo">Tickets Galore
+    <sup>&reg;</sup>
+  </h1>
+</div>
+<div class="row justify-content-center">
+  <div class="text-center" id="tag-line">Buy Buy Buy</div>
+</div>
+<div class="row justify-content-center">
+  <div class="clickedOnGoogle " id="my-signin2"></div>
+</div>
+
+<div class="header-bg">
+  <div id="preloader">
+    <div class="preloader"></div>
+  </div>
+
+
+
+
+
+  <h3>Tickets available for purchace or trade</h3>
+
+  <h4>There are {{tickets.length}} available tickets.</h4>
+  <div class="container">
+    <div class="row lead">
+      <div class="col-md-2">Ticket name</div>
+      <div class="col-md-2">Location</div>
+      <div class="col-md-2">Description</div>
+      <div class="col-md-2">Price</div>
+      <div class="col-md-2">Owner</div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" id="ticket-list">
+        <ul>
+          {{#each tickets}} {{> tickets/ticket_item_partial}} {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <h2>Add a ticket</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 ">
+
+        <form class="create-ticket-form">
+          <fieldset>
+            <legend></legend>
+            <div class="form-group">
+              <label class="form-control-label" for="email"></label>
+              <input type="text" id="email" name="email" placeholder="Enter your email address" class="form-control-lg">
             </div>
-        </div>
+            <div class="form-group">
+              <label class="form-control-label" for="ticket_name"></label>
+              <input type="text" id="ticket_name" name="ticket_name" placeholder="Enter a ticket name" class="form-control-lg">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" for="location"></label>
+              <input type="text" id="location" name="location" placeholder="Enter a location" class="form-control-lg">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" for="price"></label>
+              <input type="text" id="price" name="price" placeholder="Enter a ticket price" class="form-control-lg">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" for="description"></label>
+              <input type="text" id="description" name="description" placeholder="Enter a ticket description" class="form-control-lg">
+            </div>
+          </fieldset>
+          <button type="submit" class="btn btn-primary mb-3">Add</button>
+        </form>
+        <label>Enter a ticket you want to store and click the "Add" button</label>
+
+      </div>
+    </div>
+  </div>
 
 
-        <div class="container">
-            <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
+
+
+  <footer class="footer navbar-fixed-bottom">
+    {{! bottom section: user-specific info !}}
+    <div class="container">
+      <div class="row  justify-content-center border border-dark text-center">
+        <div class="col-12">
+          <ul>
+            <h1>user specific info: notifications from site, preferences </h1>
+            <H3 class="text-center">Your Intrests</H3>
+            {{#each user_interests}}
+            <li>
+              <p>
+                <button data-user_interestsid="{{this.id}}" class="yourStuff btn btn-success">Devour</button>
+                <label class=" p-2 rounded bg-dark text-white placeholder=" " disabled">
+                  {{this.user_id}}</label>
+              </p>
+            </li>
+            {{/each}}
+          </ul>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary" type="button">Button</button>
+            </div>
+            <input type="text" class="form-control" placeholder="Submit your ticket to sell here" aria-label="" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button class="btn btn-outline-secondary" type="button">Button</button>
+            </div>
+            <input type="text" class="form-control" placeholder="Submit your bid here" aria-label="" aria-describedby="basic-addon1">
+          </div>
+
         </div>
-    </footer>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
+    </div>
+  </footer>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Your Preferences</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>
+                <div class="row test123">
+                  <!-- icons for the modal loaded dynamiclly -->
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Submit</button>
+      </div>
+
+    </div>
+  </div>
 </div>

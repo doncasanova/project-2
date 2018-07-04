@@ -78,12 +78,13 @@ $(".test1").on("click", function (logoImage) {
         "Lynx",
         "Gophers"
     ]
-
+    $("#menu").empty();
     $(".test123").empty();
     for (var i = 0; i < logoImage.length; i++) {
 
         $(".test123").append(`<div class="img_container userPreferenceLogo"><img src="${logoImage[i]}" alt="${logoImageName[i]}" class="image"> <div class="middle">  <div class="text">${logoImageName[i]}</div></div></div>`)
 
+       
         $("#menu").append(`<a><li><img src="${logoImage[i]}" alt="${logoImageName[i]}"height="10%" width="10%"</li></a>`)
     }
 
@@ -117,4 +118,23 @@ function startDictation() {
     }
   }
 
-//   
+  $(document).ready(function() {
+		console.log("hello out there")
+    var token = '752SKMBHJW64XM6OUEMY';
+    var $events = $("#events");
+    
+    $.get('https://www.eventbriteapi.com/v3/events/search/?q=sports&location.address=minnesota&token='+token+'&expand=venue', function(res) {
+        if(res.events.length) {
+            var s = "<ul class='eventList'>";
+            for(var i=0;i<res.events.length;i++) {
+                var event = res.events[i];
+                console.log(event);
+                s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
+            }
+            s += "</ul>";
+            $events.html(s);
+        } else {
+            $events.html("<p>Sorry, there are no upcoming events.</p>");
+        }
+    });  
+  });

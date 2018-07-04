@@ -39,10 +39,10 @@
     <div class="container prefDiv ">
         <div class="row justify-content-start m-2 p-2 border border-dark">
             <div class="col-12">
+                <button type="button" class="btn btn-primary test1" data-toggle="modal" data-target="#myModal">
+                    Update Preferences
+                </button>
                 <ul id="menu">
-                    <button type="button" class="btn btn-primary test1" data-toggle="modal" data-target="#myModal">
-                        Update Preferences
-                    </button>
                 </ul>
             </div>
         </div>
@@ -68,7 +68,7 @@
     </div>
 
     <div class="container">
-        <div class="row border border-dark usersTickets">
+        <div id = "events" class="row border border-dark usersTickets">
             <ul>
                 <li>
                     <!-- List of available tickets per category request dynamiclly loaded from db -->

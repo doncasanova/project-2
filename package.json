@@ -33,6 +33,7 @@
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
+    "handlebars-helper-equal": "^1.0.0",
     "mocha": "^5.2.0",
     "mysql2": "^1.5.3",
     "passport": "^0.4.0",

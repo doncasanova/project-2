@@ -1,7 +1,7 @@
 CREATE TABLE `user_interests` (
   `user_interest_id` int(11) NOT NULL AUTO_INCREMENT,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` int(11) DEFAULT NULL,
   `lookup_event_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`user_interest_id`),
@@ -9,7 +9,7 @@ CREATE TABLE `user_interests` (
   KEY `lookup_event_id` (`lookup_event_id`),
   CONSTRAINT `user_interests_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `user_interests_ibfk_2` FOREIGN KEY (`lookup_event_id`) REFERENCES `lookup_events` (`lookup_event_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE `tickets` (
@@ -24,16 +24,16 @@ CREATE TABLE `tickets` (
   PRIMARY KEY (`ticket_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `tickets_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
-CREATE TABLE `ticket_trades` (
+SELECT * FROM tickets_db.ticket_trades;CREATE TABLE `ticket_trades` (
   `ticket_trade_id` int(11) NOT NULL AUTO_INCREMENT,
   `ticket_for_bid_user` varchar(255) DEFAULT NULL,
   `bid_status` enum('in_pool','trade_progress','claimed') DEFAULT 'in_pool',
   `bid_time` datetime DEFAULT NULL,
   `ticket_to_bid_user` varchar(255) DEFAULT NULL,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ticket_for_bid_id` int(11) DEFAULT NULL,
   `ticket_to_bid_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`ticket_trade_id`),
@@ -63,10 +63,10 @@ CREATE TABLE `users` (
 CREATE TABLE `lookup_events` (
   `lookup_event_id` int(11) NOT NULL AUTO_INCREMENT,
   `event_name` varchar(255) DEFAULT NULL,
-  `description` varchar(255) NULL DEFAULT,
-  `image_name` varchar(255) NULL DEFAULT,
-  `image_location` varchar(255) NULL DEFAULT,
-  `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `image_name` varchar(45) DEFAULT NULL,
+  `image_stored_at` varchar(45) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`lookup_event_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;

@@ -1,11 +1,4 @@
-INSERT into pref_type
-  (name)
-VALUES
-  ('sports');
-INSERT into  pref_type
-  (name)
-VALUES
-  ('arts');
+
 
 
 /*
@@ -21,7 +14,7 @@ VALUES
 insert into lookup_events
   (event_name, description, image_name, image_stored_at) VALUES
   ('vikings', 'The best in mid-west', 'vikings', '/images/pref_imgs/vikings.png');
-insert into lookup_events (event_name) VALUES 
+insert into lookup_events (event_name, description, image_name, image_stored_at) VALUES 
 ('twins', 'The baseball team in twin cities', 'twins', '/images/pref_imgs/twins.png');
 
 insert into lookup_events
@@ -46,39 +39,7 @@ insert into lookup_events
 
 
 
-
-insert into lookup_event
-  (event_name)
-VALUES
-  ('timberwolves');
-
-insert into lookup_event
-  (event_name)
-VALUES
-  ('wild');
-
-insert into lookup_event
-  (event_name)
-VALUES
-  ('united');
-insert into lookup_event
-  (event_name)
-VALUES
-  ('saints');
-
-insert into lookup_event
-  (event_name)
-VALUES
-  ('lynx');
-insert into lookup_event
-  (event_name)
-VALUES
-  ('gophers');
-
--- lookup_event
-insert into lookup_event (event_name) VALUES ('lynx');
-insert into lookup_event (event_name) VALUES ('gophers');
-
+-- user_interest
 INSERT into  user_interests (user_id, lookup_event_id) VALUES (1, 1);
 INSERT into  user_interests (user_id, lookup_event_id) VALUES (1, 2);
 INSERT into  user_interests (user_id, lookup_event_id) VALUES (1, 3);
@@ -87,3 +48,8 @@ INSERT into  user_interests (user_id, lookup_event_id) VALUES (1, 5);
 
 
         
+
+1	Vikings	Minneapolis	1350.00	You will not get another chance to buy this tickets at this price.	2018-07-05 04:54:22	2018-07-05 04:54:22	1
+2	Timberwolves	Minneapolis	870.00	This team is growing fast.	2018-07-05 04:55:14	2018-07-05 04:55:14	1
+3	Saints	Miami	560.00	The regular tema	2018-07-05 04:55:56	2018-07-05 04:55:56	1
+							

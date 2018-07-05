@@ -23,6 +23,28 @@ var logoImageName = [
 ]
 
 $(function () {
+
+  // $('.ticket-name-dropdown-menu').on('click', function(event) {
+  //   event.preventDefault();
+
+  //   $.ajax('/api/lookupEvents', {type: "GET"})
+  //     .then(function(result) {
+  //       console.log(result);
+  //       location.reload();
+  //     })
+  // });
+  
+  $("#ticket-dropdown li a").on("click", () => {
+
+    console.log($(this).text);
+    // $(this).parents(".btn-group.ticket-name-dropdown").find(".btn.btn-info.btn-ticket-name").html($(this).text() + '<span class="caret"></span>');
+    // $(this).parents(".btn-group.ticket-name-dropdown").find('.btn.btn-info.btn-ticket-name').val($(this).data('event-lookup-id'));
+    console.log($(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').html($(this).text()));
+    $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').html($(this).text() + '<span class="caret"></span>');
+    $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').val($(this).data('lookupEventId'));
+    //location.reload();
+  });
+
   $(".create-ticket-form").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();

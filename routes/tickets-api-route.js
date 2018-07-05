@@ -19,4 +19,9 @@ router.put('/api/tickets', (req, res) => tickets_api_controller.ticketUpdate(req
 
 router.delete('/api/tickets/:id', (req, res) => tickets_api_controller.ticketDelete(req, res));
 
+router.get('/api/lookupEvents', (req, res) => {
+  //console.log("session stored \n", req.session.user_id, req.session.displayName);
+  tickets_api_controller.lookupEventAll(req, res);
+});
+
 module.exports = router;

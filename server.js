@@ -4,10 +4,12 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   passport = require("passport"),
   path = require('path'),
-  expressSession = require('express-session');
+  expressSession = require('express-session'),
+  exphbs = require("express-handlebars");
   //sessionstorage = require('sessionstorage'),
   //sessionstore = require('sessionstore');
-  
+
+
 
 // Sets up the Express App
 var app = express();
@@ -32,10 +34,12 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Set Handlebars.
-var exphbs = require("express-handlebars");
+
 app.set('views', path.join (__dirname, 'views'));
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
+  // handlebars helper equal
+  //exphbs.registerHelper('equal', require("handlebars-helper-equal"))
 
 // controllers
 var ticketsApiController = require('./controllers/tickets-api-controller');
@@ -47,6 +51,7 @@ var adminRoutes = require('./routes/admin/index-routes');
 //var adminApiRoutes = require('./routes/admin/index-api-routes')(app);
 var ticketsRoute = require('./routes/tickets-route');
 var ticketsApiRoute = require('./routes/tickets-api-route');
+var lookupEventsApiRoute = require('./routes/lookup_events-api-route');
 
 // app.get('/', function(req, res) {res.render('admin')});
 
@@ -55,6 +60,7 @@ app.use(indexRoutes);
 app.use(adminRoutes);
 app.use(ticketsRoute);
 app.use(ticketsApiRoute);
+app.use(lookupEventsApiRoute);
 //app.use(adminApiRoutes);
 
 // Syncing our sequelize models and then starting our Express app

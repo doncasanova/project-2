@@ -21,9 +21,23 @@ module.exports = function(sequelize, DataTypes) {
     Image_stored_at: {
       type: DataTypes.STRING,
       notEmpty: true
-    }
+    },
+
+    description: {
+      type: DataTypes.STRING,
+      notEmpty: false
+    }, 
 
   });
+
+  LookupEvent.associate = function(models) {
+    
+    LookupEvent.hasMany(models.ticket, {
+      sourceKey: 'lookup_event_id',
+      foreignKey: 'lookup_event_id',
+      onDelete: "cascade"
+    });
+  };
 
   return LookupEvent;
 }

@@ -60,6 +60,12 @@ module.exports = function(sequelize, DataTypes) {
       targetKey: 'user_id',
       allowNull: false
     });
+
+    Ticket.belongsTo(models.lookup_event, {
+      foreignKey: 'lookup_event_id',
+      targetKey: 'lookup_event_id',
+      allowNull: false
+    });
     
     Ticket.hasMany(models.ticket_trade, {
       sourceKey: 'ticket_id',

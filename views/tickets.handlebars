@@ -1,6 +1,6 @@
 <nav class="navbar border border-dark navStyle">
 
-  <a class="nav-link displayName">{{user.displayName}}</a>
+  <a class="nav-link displayName">{{signedin_user.displayName}}</a>
 
   <form class "form-control mr-sm-2 siteLogo " action="" placeholder="Site Logo">
     <h1>Tickets Galore
@@ -41,16 +41,21 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-4 justify-content-start border border-dark text-center">
+    <div class="col-6 justify-content-start border border-dark text-center">
       {{!-- add handlebars loop here --}}
       <H1>Users list of their tickets</H1>
+      <ul>
+          {{#each myTickets}} 
+              {{> tickets/my_ticket_item_partial }} 
+          {{/each}}
+        </ul>
     </div>
-    <div class="col-4 ">
+    <div class="col-1 ">
 
 
     </div>
 
-    <div class="col-4 justify-content-end border border-dark text-center">
+    <div class="col-5 justify-content-end border border-dark text-center">
       {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
       <H1>Trade history here which may have items bought and items wanted</H1>
     </div>
@@ -74,14 +79,20 @@
   <div class="clickedOnGoogle " id="my-signin2"></div>
 </div>
 
+<!-- my ticket cards -->
 <div class="header-bg">
   <div id="preloader">
-    <div class="preloader"></div>
+    <div class="preloader">
+      <div class="row">
+      <div class="col-md-12" id="ticket-card-list">
+          {{#each myTickets}}            
+              {{> tickets/my_ticket_card_partial}} 
+          {{/each}}
+      </div>
+    </div>
+    </div>
   </div>
-
-
-
-
+</div>
 
   <h3>Tickets available for purchace or trade</h3>
 
@@ -120,6 +131,25 @@
             <div class="form-group">
               <label class="form-control-label" for="ticket_name"></label>
               <input type="text" id="ticket_name" name="ticket_name" placeholder="Enter a ticket name" class="form-control-lg">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label"></label>
+              <div class="btn-group ticket-name-dropdown">
+                <button type="button" class="btn btn-info btn-ticket-name" id="ticket-name">Select ticket name</button>
+                <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu ticket-name-dropdown-menu" id = "ticket-dropdown">
+                  {{!-- <ul > --}}
+                        {{#each lookupEvents}} {{> tickets/lookup_event_menu_item_partial}} {{/each}}
+                  {{!-- </ul> --}}
+                  {{!-- <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Separated link</a> --}}
+                </ul>
+              </div>
             </div>
             <div class="form-group">
               <label class="form-control-label" for="location"></label>
@@ -185,7 +215,7 @@
       <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
     </div>
   </footer>
-</div>
+
 
 
 <!-- The Modal -->

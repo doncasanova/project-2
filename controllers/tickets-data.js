@@ -11,6 +11,7 @@ class Tickets {
     this.ticketsOnMarketAll = [];
     this.ticketsOnMarketByUserIdentity = [];
     this.ticketsOnMarketByTicketName = [];
+    this.eventLookupAll = [];
 
     this.ticketSelected;
     this.ticketInserted;
@@ -36,7 +37,7 @@ class Tickets {
           this.ticketsAll.push(temp)
         });
         return dbTickets;
-        //console.log(this.ticketsAll);
+        console.log(this.ticketsAll);
       })
       .catch(err => {
         console.log(err.stack);
@@ -154,7 +155,7 @@ class Tickets {
       })
   }
 
-  updateTicketUserId(updateObj, TicketId) {
+  updateTicketUserIdAndEventId(updateObj, TicketId) {
     db.ticket.update(
       updateObj, 
       {

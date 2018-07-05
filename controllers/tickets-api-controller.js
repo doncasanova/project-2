@@ -63,12 +63,13 @@ exports.ticketCreate = function (req, res) {
   var usrs = new Users();
   console.log("ticket create reg.body \n", req.body);
 
-  var userId;
+  var valuesToUpdate;
   // get user_id using req.email value
   usrs.getUserByEmail(req.body.email)
     .then(() => {
-      userId = {
-        'user_id': usrs.userSelected.user_id
+      valuesToUpdate = {
+        'user_id': usrs.userSelected.user_id,
+        'lookup_event_id':req.body.lookup_event_id
         //'user_id': req.session.user_id
       }
     });
@@ -89,7 +90,7 @@ exports.ticketCreate = function (req, res) {
         //           .spread(results, metadata);
         // udpate created ticket with user_id value
         var tickets = new Tickets();
-        tickets.updateTicketUserId(userId, dbTicket.ticket_id);
+        tickets.updateTicketUserIdAndEventId(valuesToUpdate, dbTicket.ticket_id);
           // .then(dbT => { 
           //   console.log("ticket create \n", dbT);    
           //   res.json(dbT)

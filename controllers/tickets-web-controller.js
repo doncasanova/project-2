@@ -11,7 +11,7 @@ exports.tickets = function (req, res) {
     "user_id": req.session.user_id,
     "email": req.session.email,
     "displayName": req.session.email,
-    "user_identification": req.session.user_identification
+    "user_identification": req.session.user_identification,
   }
 
   var query = {};

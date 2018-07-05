@@ -1,6 +1,5 @@
 
 var imageArray = []
-
 var logoImage = [
   "/images/pref_imgs/vikings.png",
   "/images/pref_imgs/twins.png",
@@ -10,11 +9,21 @@ var logoImage = [
   "/images/pref_imgs/saints.png",
   "/images/pref_imgs/lynx.png",
   "/images/pref_imgs/gophers.png"
-
 ]
 
-$(function() {
-  $(".create-ticket-form").on("submit", function(event) {
+var logoImageName = [
+  "Vikings",
+  "Twins",
+  "Wolves",
+  "Wilds",
+  "United",
+  "Saints",
+  "Lynx",
+  "Gophers"
+]
+
+$(function () {
+  $(".create-ticket-form").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 
@@ -32,15 +41,15 @@ $(function() {
     $.ajax("/api/tickets", {
       type: "POST",
       data: newTicket
-    }).then(function() {
-        console.log("created new ticket");
-        // Reload the page to get the updated list
-        location.reload();
-      }
+    }).then(function () {
+      console.log("created new ticket");
+      // Reload the page to get the updated list
+      location.reload();
+    }
     );
   });
 
-  $(".trade-ticket").on("click", function(event) {
+  $(".trade-ticket").on("click", function (event) {
     var ticket_id = $(this).data("ticket_id");
     // we need to get message in modal
 
@@ -53,7 +62,7 @@ $(function() {
       type: "PUT",
       data: message
     }).then(
-      function() {
+      function () {
         console.log("Traded ticket " + ticket_id);
         // Reload the page to get the updated list
         location.reload();
@@ -84,76 +93,49 @@ function changeBackground() {
   cur_image++;
 
   if (cur_image >= images.length)
-      cur_image = 0;
+    cur_image = 0;
 
   // change images
   $('.backGround').css({
-      backgroundImage: 'url(' + images[cur_image] + ')'
+    backgroundImage: 'url(' + images[cur_image] + ')'
   });
 
   $('.backGround .slide').fadeOut('slow', function () {
-      $(this).css({
-          backgroundImage: 'url(' + images[cur_image] + ')'
-      }).show();
+    $(this).css({
+      backgroundImage: 'url(' + images[cur_image] + ')'
+    }).show();
   });
 
 }
 
 setInterval(changeBackground, 5000);
+
+
+
 // ---------------------------------------------------------------------------------------
 // Loads images into modal for preference seletion 
-$(".test1").on("click", function (logoImage) {
-  var logoImage = [
-      "/images/pref_imgs/vikings.png",
-      "/images/pref_imgs/twins.png",
-      "/images/pref_imgs/wolves.png",
-      "/images/pref_imgs/wild.png",
-      "/images/pref_imgs/united.png",
-      "/images/pref_imgs/saints.png",
-      "/images/pref_imgs/lynx.png",
-      "/images/pref_imgs/gophers.png"
+$("#pbutton").on("click", function () {
 
-  ]
-
-  var logoImageName = [
-      "Vikings",
-      "Twins",
-      "Wolves",
-      "Wilds",
-      "United",
-      "Saints",
-      "Lynx",
-      "Gophers"
-  ]
-  $("#menu").empty();
   $(".test123").empty();
   for (var i = 0; i < logoImage.length; i++) {
-      var imageClass = ("imageClass"+[i])
-      $(".test123").append(`<div class="img_container userPreferenceLogo"><a href= ><img src="${logoImage[i]}" alt="${logoImageName[i]}" id = "${imageClass}" class="image"></a><div class="middle"><div class="text">${logoImageName[i]}</div></div></div>`)
+    var imageClass = ("imageClass" + [i])
+
+    $(".test123").append(`<div class="img_container userPreferenceLogo"><input type="radio" name="pref" value="${logoImageName[i]}"><img src="${logoImage[i]}" alt="${logoImageName[i]}" id = "${imageClass}" class="image"><div class="middle"><div class="text">${logoImageName[i]}</div></div></div>`)
+
   }
-
-  $("#imageClass0, #imageClass1, #imageClass2, #imageClass3, #imageClass4, #imageClass5, #imageClass6, #imageClass7").on("click", function(){
-
-    $("#menu").append(`<li><img src="/images/pref_imgs/vikings.png" alt="${logoImageName[i]}"height="10%" width="10%"</li>`)
-  });
 
 });
 
-//--------------------------------------------------------------------------------------
-//
 
-// $(".clickImagePref").on("document", function () {
-//   alert("yes")
-// });
 //--------------------------------------------------------------------------------------
 //renders the preference images to the div 
+$("#submit").click(function () {
+  var val = $('input[name=pref]:checked').val();
+  
 
-// $("#prefRendToDiv").on("click", function () {
-//   alert("yes no")
-// $("#menu").append(`<li><img src="${logoImage[i]}" alt="${logoImageName[i]}"height="10%" width="10%"</li>`)
-// });
+  $("#menu").append(`<input type="radio" name="pref" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
 
-
+});
 
 
 // -------------------------------------------------------------------------------------
@@ -170,36 +152,36 @@ function startDictation() {
     recognition.lang = "en-US";
     recognition.start();
 
-    recognition.onresult = function(e) {
+    recognition.onresult = function (e) {
       document.getElementById('transcript').value
-                               = e.results[0][0].transcript;
+        = e.results[0][0].transcript;
       recognition.stop();
       document.getElementById('labnol').submit();
     };
 
-    recognition.onerror = function(e) {
+    recognition.onerror = function (e) {
       recognition.stop();
     }
 
   }
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
   var token = '752SKMBHJW64XM6OUEMY';
   var $events = $("#events");
-  
-  $.get('https://www.eventbriteapi.com/v3/events/search/?q=sports&location.address=minnesota&token='+token+'&expand=venue', function(res) {
-      if(res.events.length) {
-          var s = "<ul class='eventList'>";
-          for(var i=0;i<res.events.length;i++) {
-              var event = res.events[i];
-              // console.log(event);
-              s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
-          }
-          s += "</ul>";
-          $events.html(s);
-      } else {
-          $events.html("<p>Sorry, there are no upcoming events.</p>");
+
+  $.get('https://www.eventbriteapi.com/v3/events/search/?q=sports&location.address=minnesota&token=' + token + '&expand=venue', function (res) {
+    if (res.events.length) {
+      var s = "<ul class='eventList'>";
+      for (var i = 0; i < res.events.length; i++) {
+        var event = res.events[i];
+        // console.log(event);
+        s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
       }
-  });  
+      s += "</ul>";
+      $events.html(s);
+    } else {
+      $events.html("<p>Sorry, there are no upcoming events.</p>");
+    }
+  });
 });

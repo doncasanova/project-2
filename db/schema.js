@@ -62,9 +62,10 @@ CREATE TABLE `users` (
 
 CREATE TABLE `lookup_events` (
   `lookup_event_id` int(11) NOT NULL AUTO_INCREMENT,
-  `event_type` varchar(255) DEFAULT NULL,
   `event_name` varchar(255) DEFAULT NULL,
-  `description` text,
+  `description` varchar(255) NULL DEFAULT,
+  `image_name` varchar(255) NULL DEFAULT,
+  `image_location` varchar(255) NULL DEFAULT,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`lookup_event_id`)

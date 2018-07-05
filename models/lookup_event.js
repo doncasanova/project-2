@@ -13,6 +13,16 @@ module.exports = function(sequelize, DataTypes) {
       notEmpty: true
     }, 
 
+    image_name: {
+      type: DataTypes.STRING,
+      notEmpty: true
+    },
+    
+    Image_stored_at: {
+      type: DataTypes.STRING,
+      notEmpty: true
+    }
+
   });
 
   return LookupEvent;

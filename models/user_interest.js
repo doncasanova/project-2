@@ -1,6 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
 
   var UserInterest = sequelize.define("user_interest", {  
+    
     user_interest_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,

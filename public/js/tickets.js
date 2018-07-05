@@ -1,5 +1,5 @@
 
-var imageArray = []
+
 var logoImage = [
   "/images/pref_imgs/vikings.png",
   "/images/pref_imgs/twins.png",
@@ -150,13 +150,31 @@ $("#pbutton").on("click", function () {
 
 
 //--------------------------------------------------------------------------------------
-//renders the preference images to the div 
+//renders the users choice of preferences images to the pref div 
+var imageArray = []
 $("#submit").click(function () {
   var val = $('input[name=pref]:checked').val();
-  
+   imageArray.push(val)
+    $("#menu").append(`<input type="radio" name="pref" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
+    alert("this is your array " + imageArray)
+   
+});
 
-  $("#menu").append(`<input type="radio" name="pref" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
+// adds submit button for adding image to the preference div
+$("#submit").click(function () {
+  $("#submit2").remove();
+  $("#menu").prepend(`</div>
+  <button id = "submit2" class="btn btn-danger" data-dismiss="modal">Submit</button>
+</div>`)
 
+});
+//--------------------------------------------------------------------------------------
+//renders the users tickets to buy 
+$("body").on("click", "#submit2", function () {
+  var val = $('input[name=pref]:checked').val();
+  $("#userTrade").prepend(`<div><img src="/images/pref_imgs/${val}.png" alt=""height="50%" width="50%"</div>`)
+
+alert("this is our value " + val)
 });
 
 

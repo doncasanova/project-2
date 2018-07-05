@@ -120,7 +120,7 @@ $("#pbutton").on("click", function () {
   for (var i = 0; i < logoImage.length; i++) {
     var imageClass = ("imageClass" + [i])
 
-    $(".test123").append(`<div class="img_container userPreferenceLogo"><input type="radio" name="pref" value="${logoImageName[i]}"><img src="${logoImage[i]}" alt="${logoImageName[i]}" id = "${imageClass}" class="image"><div class="middle"><div class="text">${logoImageName[i]}</div></div></div>`)
+    $(".test123").append(`<div class="img_container userPreferenceLogo"><input type="checkbox" name="pref" value="${logoImageName[i]}"><img src="${logoImage[i]}" alt="${logoImageName[i]}" id = "${imageClass}" class="image"><div class="middle"><div class="text">${logoImageName[i]}</div></div></div>`)
 
   }
 
@@ -130,22 +130,26 @@ $("#pbutton").on("click", function () {
 //--------------------------------------------------------------------------------------
 //renders the users choice of preferences images to the div 
 $("#submit").click(function () {
+//   $("#menu").append(`</div>
+//   <button id = "submit2" class="btn btn-danger" data-dismiss="modal">Submit</button>
+// </div>`)
   var val = $('input[name=pref]:checked').val();
-  
+  $("input:checked").each(function () {
 
-  $("#menu").append(`<input type="radio" name="pref" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
-
+    $("#menu").append(`<input type="checkbox" name="pref" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
+  });
 });
 
 //--------------------------------------------------------------------------------------
 //renders the users tickets to buy 
 $("#submit2").click(function () {
+
   var val = $('input[name=pref]:checked').val();
-  
+  $("#userTrade").prepend(`<div><img src="/images/pref_imgs/${val}.png" alt=""height="100%" width="100%"</div>`)
 
-  $("#userTrade").append(`<input type="radio" name="userPick" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
-
+alert("this is our value " + val)
 });
+
 
 // -------------------------------------------------------------------------------------
 // function for speak voice

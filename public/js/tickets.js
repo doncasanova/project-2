@@ -133,7 +133,7 @@ $("#submit").click(function () {
   var val = $('input[name=pref]:checked').val();
   
 
-  $("#menu").append(`<li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
+  $("#menu").append(`<input type="radio" name="pref" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
 
 });
 

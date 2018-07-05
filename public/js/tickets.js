@@ -138,8 +138,6 @@ $("#submit").click(function () {
    
 });
 
-
-
 // adds submit button for adding image to the preference div
 $("#submit").click(function () {
   $("#submit2").remove();

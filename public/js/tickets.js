@@ -128,7 +128,7 @@ $("#pbutton").on("click", function () {
 
 
 //--------------------------------------------------------------------------------------
-//renders the preference images to the div 
+//renders the users choice of preferences images to the div 
 $("#submit").click(function () {
   var val = $('input[name=pref]:checked').val();
   
@@ -137,6 +137,15 @@ $("#submit").click(function () {
 
 });
 
+//--------------------------------------------------------------------------------------
+//renders the users tickets to buy 
+$("#submit2").click(function () {
+  var val = $('input[name=pref]:checked').val();
+  
+
+  $("#userTrade").append(`<input type="radio" name="userPick" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
+
+});
 
 // -------------------------------------------------------------------------------------
 // function for speak voice

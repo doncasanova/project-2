@@ -1,26 +1,5 @@
 
 
-var logoImage = [
-  "/images/pref_imgs/vikings.png",
-  "/images/pref_imgs/twins.png",
-  "/images/pref_imgs/wolves.png",
-  "/images/pref_imgs/wild.png",
-  "/images/pref_imgs/united.png",
-  "/images/pref_imgs/saints.png",
-  "/images/pref_imgs/lynx.png",
-  "/images/pref_imgs/gophers.png"
-]
-
-var logoImageName = [
-  "Vikings",
-  "Twins",
-  "Wolves",
-  "Wilds",
-  "United",
-  "Saints",
-  "Lynx",
-  "Gophers"
-]
 
 $(function () {
 
@@ -133,6 +112,27 @@ function changeBackground() {
 setInterval(changeBackground, 5000);
 
 
+var logoImage = [
+  "/images/pref_imgs/vikings.png",
+  "/images/pref_imgs/twins.png",
+  "/images/pref_imgs/wolves.png",
+  "/images/pref_imgs/wild.png",
+  "/images/pref_imgs/united.png",
+  "/images/pref_imgs/saints.png",
+  "/images/pref_imgs/lynx.png",
+  "/images/pref_imgs/gophers.png"
+]
+
+var logoImageName = [
+  "Vikings",
+  "Twins",
+  "Wolves",
+  "Wilds",
+  "United",
+  "Saints",
+  "Lynx",
+  "Gophers"
+]
 
 // ---------------------------------------------------------------------------------------
 // Loads images into modal for preference seletion 

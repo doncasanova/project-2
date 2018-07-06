@@ -1,9 +1,8 @@
 {
   "development": {
     "database": "tickets_db",
-    "port": 3306,
-    "dialect": "mysql",
-    "username": "root"
+    "port": null,
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",

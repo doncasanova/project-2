@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "nodemonConfig": {
-    "ignore": ["config/config.json"]
+    "ignore": [
+      "config/config.json"
+    ]
   },
   "scripts": {
     "test": "nodemon server"

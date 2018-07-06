@@ -23,6 +23,8 @@ router.get('/api/tickets/user/:id/userInterests', (req, res) => tickets_api_cont
 
 router.post('/api/tickets/user/:id/userInterests', (req, res) => tickets_api_controller.userInterestCreate(req, res));
 
+router.post('/api/tickets/ticketTrades', (req, res) => tickets_api_controller.ticketTradeCreate(req, res));
+
 // router.get('/api/lookupEvents', (req, res) => {
 //   //console.log("session stored \n", req.session.user_id, req.session.displayName);
 //   tickets_api_controller.lookupEventAll(req, res);

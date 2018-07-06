@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
       notEmpty: true
     },
     
-    Image_stored_at: {
+    image_stored_at: {
       type: DataTypes.STRING,
       notEmpty: true
     },

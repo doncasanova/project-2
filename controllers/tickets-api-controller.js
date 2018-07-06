@@ -121,6 +121,7 @@ exports.ticketDelete = function (req, res) {
     }
   }).then(dbTicket => res.json(dbTicket));
 }
+
 // respond to POST /api/userInterests
 exports.userInterestCreate = function (req, res) {
 
@@ -129,9 +130,9 @@ exports.userInterestCreate = function (req, res) {
   //console.log('session userId \n', U.getUserFromSessionStorage.user_id);
   db.user_interest.create(req.body)
       .then(dbUserInterest => {
-        console.log("after user interest create user_interest_id: \n", dbUserInterest.insertId);
+        console.log("after user interest create user_interest_id: \n", dbUserInterest.insertedId);
        
-        res.json({user_interest_id: dbUserInterest.insertId});
+        res.json({user_interest_id: dbUserInterest.insertedId});
       });
 };
 
@@ -156,6 +157,21 @@ exports.userInterestsByUserId = function(req, res) {
         console.log("userInterests findAll \n", dbUserInterests);
     res.json(dbUserInterests);
   });
+
+
+ // respond to POST /api/tickets/tiketTrades
+  exports.ticketTradeCreate = function (req, res) {
+    
+    //console.log('session userId \n', U.getUserFromSessionStorage.user_id);
+    db.ticket_trade.create(req.body)
+        .then(dbTicketTrades => {
+          console.log("after ticket trade create, new ticket_trade_id: \n", dbTicketTrades.insertedId);
+        
+          res.json({ticket_trade_id: dbTicketTrades.insertedId});
+        });
+  };
+
+  
 }
 
 

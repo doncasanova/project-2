@@ -24,6 +24,7 @@ exports.tickets = function (req, res) {
     var ticketsWithUserIdAndEventId;
     var myTickets;
     var userInterests;
+    var ticketTrades;
     var hbsObj;
 
     const dataForTiketsWeb = async (req, res, next) => {
@@ -50,7 +51,6 @@ exports.tickets = function (req, res) {
         console.log(err.stack());
       }
     }
-
     dataForTiketsWeb();
 
     db.ticket.findAll({
@@ -58,13 +58,11 @@ exports.tickets = function (req, res) {
         include: [db.user, db.lookup_event]
       })
       .then(function (dbTickets) {
-
         () => dbTickets;
-        console.log("Tickets page - dbTickets \n", dbTickets);
+        //console.log("Tickets page - dbTickets \n", dbTickets);
         ticketsWithUserIdAndEventId = dbTickets;
-
-        }).then(function () {
-
+        })
+        .then(function () {
           db.ticket.findAll({
               where: {
                 user_id: signedin_user.user_id
@@ -73,42 +71,54 @@ exports.tickets = function (req, res) {
             })
             .then(function (dbMyTickets) {
 
-              console.log("Tickets page - dbMyTickets \n", dbMyTickets);
+              //console.log("Tickets page - dbMyTickets \n", dbMyTickets);
               myTickets = dbMyTickets;
             })
-            .then(function() {
+            .then(function () {
               db.user_interest.findAll({
-                where: {
-                  user_id: signedin_user.user_id
-                },
-                include: [db.user, db.lookup_event]
-              })
-            })
-            .then(function(dbUserInterests) {
-              console.log("Tickets page - dbUserInterests \n", dbUserInterests);
-              userInterests = dbUserInterests;
-            })
-              .then(function(){
+                  where: {
+                    user_id: signedin_user.user_id
+                  },
+                  include: [db.user, db.lookup_event]
+                })
+                .then(function (dbUserInterests) {
 
-                db.lookup_event.findAll({
-              })
-                .then(function (dbLookupEvents) {
+                  //console.log("Tickets page - dbUserInterests \n", dbUserInterests);
+                  userInterests = dbUserInterests;
+                })
+                .then(function () {
+                  db.lookup_event.findAll({})
+                    .then(function (dbLookupEvents) {
 
-                  console.log("Tickets page - dbLookupEvents \n", dbLookupEvents);
-                  lookupEvents = dbLookupEvents;
+                      //console.log("Tickets page - dbLookupEvents \n", dbLookupEvents);
+                      lookupEvents = dbLookupEvents;
+                    })
+                    .then(function() {
+                      db.ticket_trade.findAll({
+                        include: [{all: true}]
+                        // include: [{model: db.ticket, as: 'forBidTicket'},
+                        //           {model: db.ticket, as: 'toBidTicket'}]
+                      })
+                      .then(function(dbTicketTrades) {
 
-                  var hbsObj = {
-                    tickets: ticketsWithUserIdAndEventId,
-                    myTickets: myTickets,
-                    lookupEvents: lookupEvents,
-                    userInterests: userInterests,
-                    signedin_user: signedin_user
-                  };
+                        console.log("Tickets page - dbTicketTrades \n", dbTicketTrades);
+                        ticketTrades = dbTicketTrades;
+
+                        var hbsObj = {
+                          tickets: ticketsWithUserIdAndEventId,
+                          myTickets: myTickets,
+                          lookupEvents: lookupEvents,
+                          userInterests: userInterests,
+                          ticketTrades: ticketTrades,
+                          signedin_user: signedin_user
+                        };
   
-                  res.render('tickets', hbsObj);
-              });           
-            })
-        })
+                        res.render('tickets', hbsObj);
+                      })
+                    })
+                })
+            })     
+          })
       }
 
 

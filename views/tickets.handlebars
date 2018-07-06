@@ -1,6 +1,6 @@
 <nav class="navbar border border-dark navStyle">{{log signed_user}}
 
-  <a class="nav-link displayName">{{signedin_user.displayName}} ({{signedin_user.user_id}})</a>
+  <a class="nav-link displayName">{{signedin_user.displayName}}</a>
   <input type="hidden" id="userId" name="userId" value={{signedin_user.user_id}}>
   <form class "form-control mr-sm-2 siteLogo " action="" placeholder="Site Logo">
     <h1>Tickets Galore
@@ -24,53 +24,16 @@
         {{#each userInterests}}
         <li>
           <input type="radio" name="pref" value="{{lookup_event.event_name}}">
-          <img src="{{lookup_event.image_stored_at}}"" alt height="10%" width="10%">
+          <img src="{{lookup_event.image_stored_at}}" alt height="10%" width="10%">
         </li>
         {{/each}}
       </ul>
-<<<<<<< HEAD
    
     </div>
-=======
->>>>>>> deaa020fe109df336acf607eb310d67aac23cf72
 
     </div>
-<<<<<<< HEAD
     <div class="col-1 ">
     </div>
-
-    <!-- trade history here which may have items bought and items wanted -->
-    <div id = "userTradeHistory" class="col-4 justify-content-end border border-dark text-center">
-      {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
-      <H1>Trade history here which may have items bought and items wanted</H1>
-      <ul>
-          {{#each myTicketTradeHistory}} 
-             <li>
-              <div class="row">
-                <div class="col-md-2">{{ticket_name}}</div>
-                <div class="col-md-2">{{location}}</div>
-                <div class="col-md-6">{{description}}</div>
-                <div class="col-md-2">{{price}}</div>
-                {{!-- <div class="col-md-2">
-                  <button  class="trade-ticket" data-ticket_id="{{this.ticket_id}}" >Trade</button>
-                  <button class="buy-ticket" data-ticket_id="{{this.ticket_id}}">Buy</button>
-                </div> --}}
-              </div>
-            </li>
-          {{/each}}
-        </ul>
-    </div>
-=======
-
-    <div class="container">
-      <div class="row .container-fluid">
-        <div class="col-md-12 border ">
-
-        </div>
-      </div>
-    </div>
-
->>>>>>> deaa020fe109df336acf607eb310d67aac23cf72
 
     <div class="container">
       <div class="row">
@@ -85,18 +48,55 @@
 
 
         </div>
+        <!-- trade history here which may have items bought and items wanted -->
+      <div id = "userTradeHistory" class="col-4 justify-content-end border border-dark text-center">
+      {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
+        <H1>Trade history here which may have items bought and items wanted</H1>
+        <ul>
+            {{#each myTicketTradeHistory}} 
+              <li>
+                <div class="row">
+                  <div class="col-md-2">{{ticket_name}}</div>
+                  <div class="col-md-2">{{location}}</div>
+                  <div class="col-md-6">{{description}}</div>
+                  <div class="col-md-2">{{price}}</div>
+                  {{!-- <div class="col-md-2">
+                    <button  class="trade-ticket" data-ticket_id="{{this.ticket_id}}" >Trade</button>
+                    <button class="buy-ticket" data-ticket_id="{{this.ticket_id}}">Buy</button>
+                  </div> --}}
+                </div>
+              </li>
+          {{/each}}
+        </ul>
+    </div>
 
-        <div id="userTrade" class="col-4 justify-content-end border border-dark text-center">
+        {{!-- <div id="userTrade" class="col-4 justify-content-end border border-dark text-center">
           {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
           <H1>Trade history here which may have items bought and items wanted</H1>
-        </div>
+        </div> --}}
 
       </div>
 
     </div>
 
-    <!-- my ticket cards -->
+    <!-- my ticket trade cards -->
     <div class="header-bg">
+      <div id="preloader">
+        <div class="preloader">
+          <div class="row">
+            <div class="col-md-12 d-inline-block" id="ticket-card-list">
+              {{#each ticketTrades}} 
+                {{#if ticketTrades}}
+                  {{> tickets/ticket_trade_card_partial}} 
+                {{/if}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {{!-- <div class="header-bg">
       <div id="preloader">
         <div class="preloader">
           <div class="row">
@@ -106,10 +106,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> --}}
+
 
     <h3>Tickets available for purchace or trade</h3>
-
     <h4>There are {{tickets.length}} available tickets.</h4>
     <div class="container">
       <div class="row lead">
@@ -260,32 +260,7 @@
         <input type="text" class="form-control m-2" id="eventInput" placeholder="look up an event">
       </form>
     </div>
-<<<<<<< HEAD
   </div>
 </div>
 
 		<script src="/js/tickets.js"></script>
-=======
-    <div id="events">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-        </tbody>
-      </table>
-      
-     
->>>>>>> deaa020fe109df336acf607eb310d67aac23cf72

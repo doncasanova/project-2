@@ -65,6 +65,29 @@ $(function () {
         );
       });
 
+      $("#offerInMarket").on("click", function(event) {
+        event.preventDefault();
+
+        var data = {
+          "ticket_for_bid_id": $(this).data("ticket_id"),
+          // "ticket_name": $(this).data("ticket_name"),
+          // "location": $(this).data("location"),
+          // "description": $(this).data("description"),
+          // "price": $(this).data("price"),
+          "ticket_for_bid_user": $(this).data("owner_name")
+          // "user_id": $(this).data("user_id"),
+          // "lookup_event_id": $(this).data("lookup_event_id")
+        }
+
+        $.ajax("/api/tickets/ticketTrades", {
+          TYPE: "CREATE",
+          data: data
+        }).then(function() {
+          console.log("Offer in Market: created ticket_trade entry");
+          location.reload();
+        })
+      });
+
 
 
 
@@ -248,14 +271,6 @@ $(function () {
             </div>
             </div>`);
 
-          //var logoImageName = $(logoImageName[i]);
-
-          // add this ticket to user preference
-          //addTicketToUserPreference(logoImageName);
-
-          // Make sure to preventDefault on a submit event.
-
-
           // add ticket trade history to the below right side section
 
         }
@@ -271,8 +286,9 @@ $(function () {
         event.preventDefault();
         var val = $('input[name=pref]:checked').val();
         imageArray.push(val)
-        $("#menu").append(`<input type="radio" name="pref" value="${val}">
-                      <li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
+        $("#menu").append(`<li><input type="radio" name="pref" value="${val}">
+                      <img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%">
+                      </li>`)
         //alert("this is your array " + imageArray)
 
         // add this ticket to user preference
@@ -284,9 +300,8 @@ $(function () {
       $("#submit").click(function () {
         $("#submit2").remove();
         $("#menu").prepend(`</div>
-  <button id = "submit2" class="btn btn-danger" data-dismiss="modal">Submit</button>
-</div>`)
-
+          <button id = "submit2" class="btn btn-danger" data-dismiss="modal">Submit</button>
+            </div>`)
       });
       //--------------------------------------------------------------------------------------
       //renders the users tickets to buy 

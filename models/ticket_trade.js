@@ -19,13 +19,14 @@ module.exports = function(sequelize, DataTypes) {
     },
 
     bid_time: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
+      allowNull: true
       //defaultValue: CURRENT_TIMESTAMP
     },
 
     ticket_to_bid_user: {
       type: DataTypes.STRING,
-      notEmpty: true
+      allowNull: true
     }
   });
 
@@ -34,6 +35,7 @@ module.exports = function(sequelize, DataTypes) {
 
     //foreign key ticket_for_bid_id is added to ticket_trade table
     TicketTrade.belongsTo(models.ticket, {
+      //as: 'forBidTicket',
       foreignKey: 'ticket_for_bid_id',
       targetKey: 'ticket_id',
       allowNull: false
@@ -41,6 +43,7 @@ module.exports = function(sequelize, DataTypes) {
 
     //foreign key ticket_to_bid_id is added to ticket_trade table
     TicketTrade.belongsTo(models.ticket, {
+      //as: 'toBidTicket', 
       foreignKey: 'ticket_to_bid_id',
       targetKey: 'ticket_id',
       allowNull: true

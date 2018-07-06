@@ -24,26 +24,33 @@ var logoImageName = [
 
 $(function () {
 
-  // $('.ticket-name-dropdown-menu').on('click', function(event) {
-  //   event.preventDefault();
+  $(document).on('change', "#eventFilter", function() {
+    $('#eventFilter').empty();
+    $("option[value=" + this.value + "]", this)
+            .attr("selected", true)
+            .siblings()
+            .removeAttr('selected');
+  })
 
-  //   $.ajax('/api/lookupEvents', {type: "GET"})
-  //     .then(function(result) {
-  //       console.log(result);
-  //       location.reload();
-  //     })
-  // });
-  
-  $("#ticket-dropdown li a").on("click", () => {
+  $(document).on('click', "#ticket-dropdown ul li a", function() {
+    event.preventDefault();
 
-    console.log($(this).text);
-    // $(this).parents(".btn-group.ticket-name-dropdown").find(".btn.btn-info.btn-ticket-name").html($(this).text() + '<span class="caret"></span>');
-    // $(this).parents(".btn-group.ticket-name-dropdown").find('.btn.btn-info.btn-ticket-name').val($(this).data('event-lookup-id'));
-    console.log($(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').html($(this).text()));
-    $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').html($(this).text() + '<span class="caret"></span>');
-    $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').val($(this).data('lookupEventId'));
+    $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket_name').html($(this).text() + '<span class="caret"></span>');
+    $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket_name').val($(this).data('lookupeventid'));
+
     //location.reload();
-  });
+  })
+  
+  // $("#ticket-dropdown li a").on("click", () => {
+
+  //   console.log($(this).text);
+  //   // $(this).parents(".btn-group.ticket-name-dropdown").find(".btn.btn-info.btn-ticket-name").html($(this).text() + '<span class="caret"></span>');
+  //   // $(this).parents(".btn-group.ticket-name-dropdown").find('.btn.btn-info.btn-ticket-name').val($(this).data('event-lookup-id'));
+  //   console.log($(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').html($(this).text()));
+  //   $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').html($(this).text() + '<span class="caret"></span>');
+  //   $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').val($(this).data('lookupEventId'));
+  //   //location.reload();
+  // });
 
   $(".create-ticket-form").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
@@ -51,7 +58,8 @@ $(function () {
 
     var newTicket = {
       email: $('#email').val().trim(),
-      ticket_name: $("#ticket_name").val().trim(),
+      lookup_event_id: Number($("#ticket_name").val().trim()),
+      ticket_name: $("#ticket_name").text().trim(),
       location: $("#location").val().trim(),
       price: parseFloat($("#price").val().trim()),
       description: $('#description').val().trim()

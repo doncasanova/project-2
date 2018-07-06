@@ -64,7 +64,7 @@
   <div id="preloader">
     <div class="preloader">
       <div class="row">
-      <div class="col-md-12" id="ticket-card-list">
+      <div class="col-md-12 d-inline-block" id="ticket-card-list">
           {{#each myTickets}}            
               {{> tickets/my_ticket_card_partial}} 
           {{/each}}
@@ -95,7 +95,6 @@
     </div>
   </div>
 
-
   <h2>Add a ticket</h2>
   <div class="container">
     <div class="row">
@@ -110,25 +109,19 @@
             </div>
             <div class="form-group">
               <label class="form-control-label" for="ticket_name"></label>
-              <input type="text" id="ticket_name" name="ticket_name" placeholder="Enter a ticket name" class="form-control-lg">
-            </div>
-            <div class="form-group">
-              <label class="form-control-label"></label>
               <div class="btn-group ticket-name-dropdown">
-                <button type="button" class="btn btn-info btn-ticket-name" id="ticket-name">Select ticket name</button>
-                <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-light btn-ticket-name" id="ticket_name" name="ticket_name">Select ticket name</button>
+                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
-                <ul class="dropdown-menu ticket-name-dropdown-menu" id = "ticket-dropdown">
-                  {{!-- <ul > --}}
-                        {{#each lookupEvents}} {{> tickets/lookup_event_menu_item_partial}} {{/each}}
-                  {{!-- </ul> --}}
-                  {{!-- <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Separated link</a> --}}
+                <div class="dropdown-menu ticket-name-dropdown-menu" id = "ticket-dropdown">
+                 <ul class="list-unstyled">
+                        {{#each lookupEvents}} 
+                        <li><a class="dropdown-item" data-lookupeventid={{lookup_event_id}}>{{event_name}}</a></li>
+                            {{!-- {{> tickets/lookup_event_menu_item_partial}}  --}}
+                        {{/each}}
                 </ul>
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -151,9 +144,6 @@
       </div>
     </div>
   </div>
-
-
-
 
   <footer class="footer navbar-fixed-bottom">
     {{! bottom section: user-specific info !}}

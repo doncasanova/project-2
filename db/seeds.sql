@@ -13,28 +13,28 @@
 
 insert into lookup_events
   (event_name, description, image_name, image_stored_at) VALUES
-  ('vikings', 'The best in mid-west', 'vikings', '/images/pref_imgs/vikings.png');
+  ('Vikings', 'The best in mid-west', 'vikings', '/images/pref_imgs/vikings.png');
 insert into lookup_events (event_name, description, image_name, image_stored_at) VALUES 
-('twins', 'The baseball team in twin cities', 'twins', '/images/pref_imgs/twins.png');
+('Twins', 'The baseball team in twin cities', 'twins', '/images/pref_imgs/twins.png');
 
 insert into lookup_events
   (event_name, description, image_name, image_stored_at) VALUES
-  ('timberwolves', 'The best in mid-west', 'timberwolves', '/images/pref_imgs/wolves.png');
+  ('Timberwolves', 'The best in mid-west', 'timberwolves', '/images/pref_imgs/wolves.png');
 insert into lookup_events (event_name, description, image_name, image_stored_at) VALUES 
-('wild', 'The team wild', 'wild', '/images/pref_imgs/wild.png');
+('Wilds', 'The team wild', 'wild', '/images/pref_imgs/wild.png');
 
 insert into lookup_events
   (event_name, description, image_name, image_stored_at) VALUES
-  ('united', 'The Team UNITED', 'united', '/images/pref_imgs/united.png');
+  ('United', 'The Team UNITED', 'united', '/images/pref_imgs/united.png');
 insert into lookup_events (event_name, description, image_name, image_stored_at) VALUES 
-('saints', 'The team Saints', 'saints', '/images/pref_imgs/saints.png');
+('Saints', 'The team Saints', 'saints', '/images/pref_imgs/saints.png');
 
 insert into lookup_events (event_name, description, image_name, image_stored_at) VALUES 
-('lynx', 'The team Lynx', 'lynx', '/images/pref_imgs/lynx.png');
+('Lynx', 'The team Lynx', 'lynx', '/images/pref_imgs/lynx.png');
 
 insert into lookup_events
   (event_name, description, image_name, image_stored_at) VALUES
-  ('gophers', 'The Team Gophers', 'gophers', '/images/pref_imgs/gophers.png');
+  ('Gophers', 'The Team Gophers', 'gophers', '/images/pref_imgs/gophers.png');
 
 
 

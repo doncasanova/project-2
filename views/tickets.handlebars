@@ -1,7 +1,7 @@
-<nav class="navbar border border-dark navStyle">
+<nav class="navbar border border-dark navStyle">{{log signed_user}}
 
-  <a class="nav-link displayName">{{signedin_user.displayName}}</a>
-
+  <a class="nav-link displayName">{{signedin_user.displayName}} ({{signedin_user.user_id}})</a>
+  <input type="hidden" id="userId" name="userId" value={{signedin_user.user_id}}>
   <form class "form-control mr-sm-2 siteLogo " action="" placeholder="Site Logo">
     <h1>Tickets Galore
       <sup>&reg;</sup>
@@ -20,10 +20,16 @@
 <div class="container prefDiv ">
   <div class="row justify-content-start m-2 p-2 border border-dark">
     <div class="col-12">
-      <ul id="menu">
+      <ul id="menu">  
+        {{#each userInterests}}
+        <li>
+          <input type="radio" name="pref" value="{{lookup_event.event_name}}">
+          <img src="{{lookup_event.image_stored_at}}"" alt height="10%" width="10%">
+        </li>
+        {{/each}}
       </ul>
    
-</div>
+    </div>
 
 <div class="container">
   <div class="row .container-fluid">
@@ -46,13 +52,28 @@
         </ul>
     </div>
     <div class="col-1 ">
-
-
     </div>
 
-    <div id = "userTrade" class="col-4 justify-content-end border border-dark text-center">
+    <!-- trade history here which may have items bought and items wanted -->
+    <div id = "userTradeHistory" class="col-4 justify-content-end border border-dark text-center">
       {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
       <H1>Trade history here which may have items bought and items wanted</H1>
+      <ul>
+          {{#each myTicketTradeHistory}} 
+             <li>
+              <div class="row">
+                <div class="col-md-2">{{ticket_name}}</div>
+                <div class="col-md-2">{{location}}</div>
+                <div class="col-md-6">{{description}}</div>
+                <div class="col-md-2">{{price}}</div>
+                {{!-- <div class="col-md-2">
+                  <button  class="trade-ticket" data-ticket_id="{{this.ticket_id}}" >Trade</button>
+                  <button class="buy-ticket" data-ticket_id="{{this.ticket_id}}">Buy</button>
+                </div> --}}
+              </div>
+            </li>
+          {{/each}}
+        </ul>
     </div>
 
   </div>
@@ -237,3 +258,5 @@
     </div>
   </div>
 </div>
+
+		<script src="/js/tickets.js"></script>

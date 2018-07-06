@@ -1,27 +1,4 @@
 
-
-var logoImage = [
-  "/images/pref_imgs/vikings.png",
-  "/images/pref_imgs/twins.png",
-  "/images/pref_imgs/wolves.png",
-  "/images/pref_imgs/wild.png",
-  "/images/pref_imgs/united.png",
-  "/images/pref_imgs/saints.png",
-  "/images/pref_imgs/lynx.png",
-  "/images/pref_imgs/gophers.png"
-]
-
-var logoImageName = [
-  "Vikings",
-  "Twins",
-  "Wolves",
-  "Wilds",
-  "United",
-  "Saints",
-  "Lynx",
-  "Gophers"
-]
-
 $(function () {
 
   $(document).on('change', "#eventFilter", function() {
@@ -40,17 +17,7 @@ $(function () {
 
     //location.reload();
   })
-  
-  // $("#ticket-dropdown li a").on("click", () => {
 
-  //   console.log($(this).text);
-  //   // $(this).parents(".btn-group.ticket-name-dropdown").find(".btn.btn-info.btn-ticket-name").html($(this).text() + '<span class="caret"></span>');
-  //   // $(this).parents(".btn-group.ticket-name-dropdown").find('.btn.btn-info.btn-ticket-name').val($(this).data('event-lookup-id'));
-  //   console.log($(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').html($(this).text()));
-  //   $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').html($(this).text() + '<span class="caret"></span>');
-  //   $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket-name').val($(this).data('lookupEventId'));
-  //   //location.reload();
-  // });
 
   $(".create-ticket-form").on("submit", function (event) {
     // Make sure to preventDefault on a submit event.
@@ -102,7 +69,7 @@ $(function () {
 
 
 
-});
+
 
 
 // ----------------------------------------------------------------------
@@ -142,6 +109,79 @@ setInterval(changeBackground, 5000);
 
 
 
+
+
+var logo = [
+  {logoName: "Vikings", logoId: 1, imageStoredAt:"/images/pref_imgs/vikings.png" }, 
+  {logoName: "Twins", logoId: 7, imageStoredAt:"/images/pref_imgs/twins.png" }, 
+  {logoName: "Timberwolves", logoId: 8, imageStoredAt:"/images/pref_imgs/wolves.png" }, 
+  {logoName: "Wilds", logoId: 9, imageStoredAt:"/images/pref_imgs/wild.png" }, 
+  {logoName: "United", logoId: 2, imageStoredAt:"/images/pref_imgs/uniteds.png" }, 
+  {logoName: "Saints", logoId: 3, imageStoredAt:"/images/pref_imgs/saints.png" }, 
+  {logoName: "Lynx", logoId: 4, imageStoredAt:"/images/pref_imgs/lynx.png" }, 
+  {logoName: "Gophers", logoId: 5, imageStoredAt:"/images/pref_imgs/gophers.png" }, 
+]
+
+function addTicketToUserPreference(logoTitle){
+  
+  var newPref = {
+    user_id: Number($("#userId").val()),
+    lookup_event_id: logo.find(l => l.logoName.trim().toLowerCase() == logoTitle.trim().toLowerCase()).logoId
+  };
+
+  var id = newPref.user_id;
+  console.log('new preference to store \n', logoTitle);
+
+  // Send the POST request.
+  $.ajax({
+    url: "/api/tickets/user/" + id + "/userInterests",
+    method: "POST",
+    data: newPref
+  }).then(function () {
+    console.log("created new preference for a current user");
+    // Reload the page to get the updated list
+    //location.reload();
+    }
+  );
+}
+
+// $('#menu').load(function() {
+//   var id = Number($("#userId").val());
+//   // Send the GET request.
+//   $.ajax({
+//     url: "/api/tickets/user/" + id + "/userInterests",
+//     method: "GET"
+//   }).then(function () {
+//     console.log("created new preference for a current user");
+//     // Reload the page to get the updated list
+//     location.reload();
+//     }
+//   );
+// })
+  
+
+var logoImage = [
+  "/images/pref_imgs/vikings.png",
+  "/images/pref_imgs/twins.png",
+  "/images/pref_imgs/wolves.png",
+  "/images/pref_imgs/wild.png",
+  "/images/pref_imgs/united.png",
+  "/images/pref_imgs/saints.png",
+  "/images/pref_imgs/lynx.png",
+  "/images/pref_imgs/gophers.png"
+]
+
+var logoImageName = [
+  "Vikings",
+  "Twins",
+  "Wolves",
+  "Wilds",
+  "United",
+  "Saints",
+  "Lynx",
+  "Gophers"
+]
+
 // ---------------------------------------------------------------------------------------
 // Loads images into modal for preference seletion 
 $("#pbutton").on("click", function () {
@@ -150,7 +190,23 @@ $("#pbutton").on("click", function () {
   for (var i = 0; i < logoImage.length; i++) {
     var imageClass = ("imageClass" + [i])
 
-    $(".test123").append(`<div class="img_container userPreferenceLogo"><input type="radio" name="pref" value="${logoImageName[i]}"><img src="${logoImage[i]}" alt="${logoImageName[i]}" id = "${imageClass}" class="image"><div class="middle"><div class="text">${logoImageName[i]}</div></div></div>`)
+    $(".test123").append(`<div class="img_container userPreferenceLogo">
+            <input type="radio" name="pref" value="${logoImageName[i]}">
+            <img src="${logoImage[i]}" alt="${logoImageName[i]}" id = "${imageClass}" class="image">
+            <div class="middle">
+            <div class="text">${logoImageName[i]}</div>
+            </div>
+            </div>`);
+
+      //var logoImageName = $(logoImageName[i]);
+
+    // add this ticket to user preference
+    //addTicketToUserPreference(logoImageName);
+
+      // Make sure to preventDefault on a submit event.
+     
+
+    // add ticket trade history to the below right side section
 
   }
 
@@ -161,10 +217,16 @@ $("#pbutton").on("click", function () {
 //renders the users choice of preferences images to the pref div 
 var imageArray = []
 $("#submit").click(function () {
+
+  event.preventDefault();
   var val = $('input[name=pref]:checked').val();
    imageArray.push(val)
-    $("#menu").append(`<input type="radio" name="pref" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
-    alert("this is your array " + imageArray)
+    $("#menu").append(`<input type="radio" name="pref" value="${val}">
+                      <li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
+    //alert("this is your array " + imageArray)
+
+    // add this ticket to user preference
+    addTicketToUserPreference(val);
    
 });
 
@@ -182,7 +244,7 @@ $("body").on("click", "#submit2", function () {
   var val = $('input[name=pref]:checked').val();
   $("#userTrade").prepend(`<div><img src="/images/pref_imgs/${val}.png" alt=""height="50%" width="50%"</div>`)
 
-alert("this is our value " + val)
+//alert("this is our value " + val)
 });
 
 
@@ -232,4 +294,7 @@ $(document).ready(function () {
       $events.html("<p>Sorry, there are no upcoming events.</p>");
     }
   });
+});
+
+
 });

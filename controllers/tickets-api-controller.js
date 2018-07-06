@@ -121,5 +121,42 @@ exports.ticketDelete = function (req, res) {
     }
   }).then(dbTicket => res.json(dbTicket));
 }
+// respond to POST /api/userInterests
+exports.userInterestCreate = function (req, res) {
+
+  var userId = req.params.id;
+  
+  //console.log('session userId \n', U.getUserFromSessionStorage.user_id);
+  db.user_interest.create(req.body)
+      .then(dbUserInterest => {
+        console.log("after user interest create user_interest_id: \n", dbUserInterest.insertId);
+       
+        res.json({user_interest_id: dbUserInterest.insertId});
+      });
+};
+
+exports.userInterestsByUserId = function(req, res) {
+  var query = {};
+
+  // check if "get by id" kind
+  if (req.query.user_id) {
+    query.user_id = req.query.user_id;
+  } 
+  else if (req.query.id) {
+    query.user_id = req.query.id;
+  }
+  else {
+    query.user_id = req.params.id;
+  }
+
+  db.user_interest.findAll({
+        where: query,
+        include: [db.user, db.lookup_event] }) 
+      .then(function (dbUserInterests) {
+        console.log("userInterests findAll \n", dbUserInterests);
+    res.json(dbUserInterests);
+  });
+}
+
 
 

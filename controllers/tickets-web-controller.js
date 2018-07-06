@@ -23,6 +23,7 @@ exports.tickets = function (req, res) {
     var lookupEvents;
     var ticketsWithUserIdAndEventId;
     var myTickets;
+    var userInterests;
     var hbsObj;
 
     const dataForTiketsWeb = async (req, res, next) => {
@@ -75,6 +76,18 @@ exports.tickets = function (req, res) {
               console.log("Tickets page - dbMyTickets \n", dbMyTickets);
               myTickets = dbMyTickets;
             })
+            .then(function() {
+              db.user_interest.findAll({
+                where: {
+                  user_id: signedin_user.user_id
+                },
+                include: [db.user, db.lookup_event]
+              })
+            })
+            .then(function(dbUserInterests) {
+              console.log("Tickets page - dbUserInterests \n", dbUserInterests);
+              userInterests = dbUserInterests;
+            })
               .then(function(){
 
                 db.lookup_event.findAll({
@@ -88,6 +101,7 @@ exports.tickets = function (req, res) {
                     tickets: ticketsWithUserIdAndEventId,
                     myTickets: myTickets,
                     lookupEvents: lookupEvents,
+                    userInterests: userInterests,
                     signedin_user: signedin_user
                   };
   

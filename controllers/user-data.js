@@ -14,6 +14,8 @@ class Users {
     this.userSelected;
     this.userInserted;
     this.userUpdated;
+
+    this.userInterestInserted;
   }
 
   getAllUsers() {
@@ -113,6 +115,17 @@ class Users {
       //searchedTime: sessionStorage.getItem('searchedTime')
     };
   }
+
+
+  createUserInterest(userInterestInfo) {
+    this.userInterestInserted = null;
+    return db.user_interest.create(userInterestInfo)
+      .then(dbUserInterest => {
+        console.log("createUserInterest in user-data.js \n", dbUserInterest.user_interest_id);
+        this.userinterestInserted = dbUserInterest;
+        return dbUserInterest;
+      });
+  };
 }
 
 module.exports = Users;

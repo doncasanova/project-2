@@ -52,6 +52,7 @@ var adminRoutes = require('./routes/admin/index-routes');
 var ticketsRoute = require('./routes/tickets-route');
 var ticketsApiRoute = require('./routes/tickets-api-route');
 var lookupEventsApiRoute = require('./routes/lookup_events-api-route');
+var userInterestsApiRoute = require('./routes/user_interests-api-route');
 
 // app.get('/', function(req, res) {res.render('admin')});
 
@@ -61,6 +62,7 @@ app.use(adminRoutes);
 app.use(ticketsRoute);
 app.use(ticketsApiRoute);
 app.use(lookupEventsApiRoute);
+app.use(userInterestsApiRoute);
 //app.use(adminApiRoutes);
 
 // Syncing our sequelize models and then starting our Express app

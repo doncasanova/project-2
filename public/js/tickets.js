@@ -3,15 +3,15 @@
 
 $(function () {
 
-  $(document).on('change', "#eventFilter", function() {
+  $(document).on('change', "#eventFilter", function () {
     $('#eventFilter').empty();
     $("option[value=" + this.value + "]", this)
-            .attr("selected", true)
-            .siblings()
-            .removeAttr('selected');
+      .attr("selected", true)
+      .siblings()
+      .removeAttr('selected');
   })
 
-  $(document).on('click', "#ticket-dropdown ul li a", function() {
+  $(document).on('click', "#ticket-dropdown ul li a", function () {
     event.preventDefault();
 
     $(this).parents(".btn-group.ticket-name-dropdown").find('#ticket_name').html($(this).text() + '<span class="caret"></span>');
@@ -19,7 +19,7 @@ $(function () {
 
     //location.reload();
   })
-  
+
   // $("#ticket-dropdown li a").on("click", () => {
 
   //   console.log($(this).text);
@@ -162,10 +162,10 @@ $("#pbutton").on("click", function () {
 var imageArray = []
 $("#submit").click(function () {
   var val = $('input[name=pref]:checked').val();
-   imageArray.push(val)
-    $("#menu").append(`<input type="radio" name="pref" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
-    alert("this is your array " + imageArray)
-   
+  imageArray.push(val)
+  $("#menu").append(`<input type="radio" name="pref" value="${val}"><li><img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%"</li>`)
+  alert("this is your array " + imageArray)
+
 });
 
 // adds submit button for adding image to the preference div
@@ -182,7 +182,7 @@ $("body").on("click", "#submit2", function () {
   var val = $('input[name=pref]:checked').val();
   $("#userTrade").prepend(`<div><img src="/images/pref_imgs/${val}.png" alt=""height="50%" width="50%"</div>`)
 
-alert("this is our value " + val)
+  alert("this is our value " + val)
 });
 
 
@@ -214,17 +214,23 @@ function startDictation() {
   }
 }
 
-$(document).ready(function () {
+$('#submit-btn').click(searchEvent);
+function searchEvent(event) {
+  event.preventDefault();
+  var userInput = $('#eventInput').val().trim();
+
+
   var token = '752SKMBHJW64XM6OUEMY';
   var $events = $("#events");
 
-  $.get('https://www.eventbriteapi.com/v3/events/search/?q=sports&location.address=minnesota&token=' + token + '&expand=venue', function (res) {
+
+  $.get('https://www.eventbriteapi.com/v3/events/search/?q=football&location.address=minnesota&token=' + token + '&', function (res) {
     if (res.events.length) {
       var s = "<ul class='eventList'>";
       for (var i = 0; i < res.events.length; i++) {
         var event = res.events[i];
-        // console.log(event);
-        s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
+        console.log(event);
+        s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> -" + event.name.text + "</li>";
       }
       s += "</ul>";
       $events.html(s);
@@ -232,4 +238,4 @@ $(document).ready(function () {
       $events.html("<p>Sorry, there are no upcoming events.</p>");
     }
   });
-});
+};

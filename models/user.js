@@ -30,6 +30,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     
+    displayName: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+
     username: {
       type: DataTypes.STRING,
       allowNull: true

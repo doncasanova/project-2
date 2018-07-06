@@ -8,21 +8,36 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true   
     },
 
-    event_type: {
-      type: DataTypes.STRING,
-      notEmpty: true
-    },
-
     event_name: {
       type: DataTypes.STRING,
       notEmpty: true
     }, 
 
+    image_name: {
+      type: DataTypes.STRING,
+      notEmpty: true
+    },
+    
+    Image_stored_at: {
+      type: DataTypes.STRING,
+      notEmpty: true
+    },
+
     description: {
-      type: DataTypes.TEXT,
-      allowNull: true
-    }
+      type: DataTypes.STRING,
+      notEmpty: false
+    }, 
+
   });
+
+  LookupEvent.associate = function(models) {
+    
+    LookupEvent.hasMany(models.ticket, {
+      sourceKey: 'lookup_event_id',
+      foreignKey: 'lookup_event_id',
+      onDelete: "cascade"
+    });
+  };
 
   return LookupEvent;
 }

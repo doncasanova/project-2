@@ -22,9 +22,12 @@
         </form>
 
         <form class "form-control mr-sm-2 siteLogo " action="" placeholder="Site Logo">
-            <h1>Tickets Galore<sup>&reg;</sup></h1>
+            <h1>Tickets Galore
+                <sup>&reg;</sup>
+            </h1>
         </form>
-
+        <button type="button" class="btn btn-success">My List</button>
+        <button type="button" class="btn btn-success">Wish List</button>
         <form id="labnol" class="form-inline" method="get" action="https://www.google.com/search">
             <input class="form-control mr-sm-2" type="text" name="q" id="transcript" placeholder="Search / Speak">
             <img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif">
@@ -35,10 +38,12 @@
 
     <div class="container prefDiv ">
         <div class="row justify-content-start m-2 p-2 border border-dark">
-            <div class="col-4">
+            <div class="col-12">
                 <button type="button" class="btn btn-primary test1" data-toggle="modal" data-target="#myModal">
                     Update Preferences
                 </button>
+                <ul id="menu">
+                </ul>
             </div>
         </div>
     </div>
@@ -47,7 +52,7 @@
         <div class="card-header ticketTitle">Header (class = ticketTitle)</div>
         <div class="card-body">
             <h5 class="card-title ticketTitle">Primary card title (class = ticketTitle) </h5>
-            <p class="card-text ticketInfo">Cards of available tickets per category request. Dynamiclly loaded from db (class = ticketInfo)</p>
+            <p class="card-text ticketInfo">Cards of available tickets per category request. Dynamically loaded from db (class = ticketInfo)</p>
         </div>
     </div>
 
@@ -56,18 +61,18 @@
             <ul>
                 <li>
                     <!-- List of available tickets per category request dynamiclly loaded from db -->
-                    <p class="availableTickets">List of available tickets per category request. Dynamiclly loaded from db (class = availableTickets)</p>
+                    <p class="availableTickets">List of available tickets per category request. Dynamically loaded from db (class = availableTickets)</p>
                 </li>
             </ul>
         </div>
     </div>
 
     <div class="container">
-        <div class="row border border-dark usersTickets">
+        <div id="events" class="row border border-dark usersTickets">
             <ul>
                 <li>
                     <!-- List of available tickets per category request dynamiclly loaded from db -->
-                    <p class="usersTickets">List of users tickets that they listed. Dynamiclly loaded from db (class = usersTickets)</p>
+                    <p class="usersTickets">List of users tickets that they listed. Dynamically loaded from db (class = usersTickets)</p>
                 </li>
             </ul>
         </div>

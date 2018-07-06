@@ -11,17 +11,21 @@ p {
     color:rgb(226, 236, 223)
 }
 
+#menu li {display:inline;}
+
+
 /* ------------------------------------------------------------------- */
+
 /* background transition */
 .backGround { 
+    height: 700px;
     background: url(bg2.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-   background-image: url("/images/demo/vikings.jpg")
+    background-image: url("/images/demo/vikings.jpg")
  }
-
  .googleLogIn {
     height: 60px;
     width: 100%;
@@ -126,5 +130,8 @@ p {
     color: white;
     padding: 8px 24px;
     font-size: 10px;
-
+}
+.prefLogo {
+    padding: 10px;
+    margin: 10px
 }

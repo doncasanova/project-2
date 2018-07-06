@@ -17,6 +17,16 @@ module.exports = function(sequelize, DataTypes) {
       notEmpty: true
     },
 
+    price: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: true
+    },
+
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    }
+
     // season_start: {
     //   type: DataTypes.DATE,
     //   allowNull: true
@@ -27,10 +37,6 @@ module.exports = function(sequelize, DataTypes) {
     //   allowNull: true
     // },
 
-    description: {
-      type: DataTypes.TEXT
-    },
-
     // rarity: {
     //   type: DataTypes.ENUM('1', '2', '3'),
     //   defaultValue: '2'
@@ -40,11 +46,6 @@ module.exports = function(sequelize, DataTypes) {
     //   type: DataTypes.ENUM('1', '2', '3'),
     //   defaultValue: '2'
     // },
-
-    price: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: true
-    },
 
     // period: {
     //   type: DataTypes.ENUM('1', '2', '3'),
@@ -57,6 +58,12 @@ module.exports = function(sequelize, DataTypes) {
     Ticket.belongsTo(models.user, {
       foreignKey: 'user_id',
       targetKey: 'user_id',
+      allowNull: false
+    });
+
+    Ticket.belongsTo(models.lookup_event, {
+      foreignKey: 'lookup_event_id',
+      targetKey: 'lookup_event_id',
       allowNull: false
     });
     

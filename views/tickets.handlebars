@@ -145,9 +145,10 @@
         </form>
         <label>Enter a ticket you want to store and click the "Add" button</label>
       </div>
+      <div class="col-8 userPage">
+      </div>
     </div>
   </div>
-
   <footer class="footer navbar-fixed-bottom">
     {{! bottom section: user-specific info !}}
     <div class="container navStyle">
@@ -178,83 +179,79 @@
             </div>
             <input type="text" class="form-control" placeholder="Submit your bid here" aria-label="" aria-describedby="basic-addon1">
           </div>
-
+          <section class="download text-center" id="download">
+            <div class="container-fluid">
+              <div class="row text-dark">
+                <div class="col-5"></div>
+                <div class="col-2 form-group">
+                  <label for="exampleInputPassword1">Find events near you!</label>
+                  <input type="text" class="form-control" id="eventInput" placeholder="look up an event">
+                </div>
+              </div>
+            </div>
+            <button type="submit" id="submit-btn" class="col-2 btn btn-primary">Submit</button>
+            <div class="col-5"></div>
         </div>
-      </div>
-    </div>
-
-
-    <div class="container">
-      <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-
-
-  <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal body -->
-        <div class="modal-body">
-          <table class="table table-borderless">
+        </section>
+        <div id="events">
+          <table class="table text-dark">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
             <tbody>
               <tr>
-                <td>
-                  <div class="row test123">
-                    <!-- icons for the modal loaded dynamiclly -->
-                  </div>
-                </td>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
-            </tbody>
+              <tr>
+
           </table>
-        </div>
 
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button id="submit" class="btn btn-danger" data-dismiss="modal">Submit</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <section class="download text-center" id="download">
-    <div class="container-fluid">
-      <div class="row ">
-        <div class="col-5"></div>
-        <div class="col-2 form-group">
-          <label for="exampleInputPassword1">Find events near you!</label>
-          <input type="text" class="form-control" id="eventInput" placeholder="look up an event">
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-5"></div>
-      <button type="submit" id="submit-btn" class="col-2 btn btn-primary">Submit</button>
-      <div class="col-5"></div>
+</div>
+
+
+<div class="container">
+  <p class="text-center" id="footer-copy">&copy; 2017 Tickets Galore Co. All Rights Reserved.</p>
+</div>
+</footer>
+
+
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>
+                <div class="row test123">
+                  <!-- icons for the modal loaded dynamiclly -->
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button id="submit" class="btn btn-danger" data-dismiss="modal">Submit</button>
+      </div>
+
     </div>
-  </section>
-  <div id="events">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row"></th>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-
-    </table>
-
   </div>
+</div>

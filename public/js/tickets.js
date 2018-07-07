@@ -109,11 +109,11 @@ $(function () {
       cur_image = 0;
 
     // change images
-    $('.backGround').css({
+    $('.backGround, .userPage').css({
       backgroundImage: 'url(' + images[cur_image] + ')'
     });
 
-    $('.backGround .slide').fadeOut('slow', function () {
+    $('.backGround, .userPage .slide').fadeOut('slow', function () {
       $(this).css({
         backgroundImage: 'url(' + images[cur_image] + ')'
       }).show();
@@ -344,7 +344,7 @@ $(function () {
     $.get(`https://www.eventbriteapi.com/v3/events/search/?q=${userInput}&location.address=minnesota&token=` + token + '&', function (res) {
       if (res.events.length) {
         var s = "<ul class='eventList'>";
-        for (var i = 0; i < res.events.length; i++) {
+        for (var i = 0; i < 10; i++) {
           var event = res.events[i];
           console.log(event);
           s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> -" + event.name.text + "</li>";

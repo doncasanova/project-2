@@ -22,6 +22,13 @@ p {
     background-attachment: fixed;
     background-image: url("/images/demo/vikings.jpg")
  }
+ .userPage { 
+    background: url(bg2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("/images/demo/vikings.jpg")
+ }
  .googleLogIn {
     height: 60px;
     width: 100%;

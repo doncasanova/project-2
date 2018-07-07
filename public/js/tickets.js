@@ -30,15 +30,11 @@ $(function () {
       price: parseFloat($("#price").val().trim()),
       description: $('#description').val().trim()
     };
-
-    console.log('new ticket to store \n', newTicket);
-
     // Send the POST request.
     $.ajax("/api/tickets", {
       type: "POST",
       data: newTicket
     }).then(function () {
-      console.log("created new ticket");
       // Reload the page to get the updated list
       location.reload();
     });
@@ -58,7 +54,6 @@ $(function () {
       data: message
     }).then(
       function () {
-        console.log("Traded ticket " + ticket_id);
         // Reload the page to get the updated list
         location.reload();
       }
@@ -83,7 +78,6 @@ $(function () {
       TYPE: "CREATE",
       data: data
     }).then(function () {
-      console.log("Offer in Market: created ticket_trade entry");
       location.reload();
     })
   });
@@ -204,15 +198,12 @@ $(function () {
     };
 
     var id = newPref.user_id;
-    console.log('new preference to store \n', logoTitle);
-
     // Send the POST request.
     $.ajax({
       url: "/api/tickets/user/" + id + "/userInterests",
       method: "POST",
       data: newPref
     }).then(function () {
-      console.log("created new preference for a current user");
       // Reload the page to get the updated list
       //location.reload();
     });
@@ -289,7 +280,6 @@ $(function () {
     $("#menu").append(`<li><input type="radio" name="pref" value="${val}">
                       <img src="/images/pref_imgs/${val}.png" alt=""height="10%" width="10%">
                       </li>`)
-    //alert("this is your array " + imageArray)
 
     // add this ticket to user preference
     addTicketToUserPreference(val);
@@ -312,7 +302,7 @@ $(function () {
   });
 
 
-  // -------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------------------------
   // function for speak voice
   function startDictation() {
 
@@ -327,7 +317,8 @@ $(function () {
       recognition.start();
 
       recognition.onresult = function (e) {
-        document.getElementById('transcript').value = e.results[0][0].transcript;
+        document.getElementById('transcript').value
+          = e.results[0][0].transcript;
         recognition.stop();
         document.getElementById('labnol').submit();
       };
@@ -338,7 +329,8 @@ $(function () {
 
     }
   }
- 
+
+
   $('#submit-btn').click(searchEvent);
   function searchEvent(event) {
     event.preventDefault();

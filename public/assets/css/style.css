@@ -1,10 +1,6 @@
 
-h1 {
-    color:orange
-}
-
-h3 {
-    color:rgb(51, 255, 0)
+h1, h3 {
+    color:rgb(105, 88, 151)
 }
 
 p {
@@ -134,4 +130,14 @@ p {
 .prefLogo {
     padding: 10px;
     margin: 10px
+}
+.myTickets, .wishList .availableTickets, ticketsAv {
+    text-transform: uppercase;
+}
+
+.displayName { 
+    text-transform: uppercase;
+    font-size: xx-large;
+    font-style: italic;
+    font-weight: bold;
 }

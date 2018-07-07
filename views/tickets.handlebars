@@ -1,6 +1,6 @@
 <nav class="navbar border border-dark navStyle">{{log signed_user}}
 
-  <a class="nav-link displayName">{{signedin_user.displayName}}</a>
+  <a class="nav-link displayName ">{{signedin_user.displayName}}</a>
   <input type="hidden" id="userId" name="userId" value={{signedin_user.user_id}}>
   <form class "form-control mr-sm-2 siteLogo " action="" placeholder="Site Logo">
     <h1>Tickets Galore
@@ -16,10 +16,10 @@
 </nav>
 
 <div class="container prefDiv ">
-  <div class="row justify-content-start m-2 p-2 border border-dark">
+  <div class="row justify-content-start m-2 p-2 border border-dark navStyle">
     <div class="col-12">
       <button type="button" id="pbutton" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-        Update Preferences
+        Update/Add Preferences
       </button>
       <ul id="menu">
         {{#each userInterests}}
@@ -36,24 +36,21 @@
   <div class="col-1 ">
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-6 justify-content-start border border-dark text-center">
+  <div class="container ">
+    <div class="row justify-content-center">
+      <div class="col-6 border border-dark text-center navStyle p-2 m-2">
         {{!-- add handlebars loop here --}}
         <H1>Your Tickets</H1>
-        <ul>
+        <ul class="myTickets">
           {{#each myTickets}} {{> tickets/my_ticket_item_partial }} {{/each}}
         </ul>
       </div>
-      <div class="col-1 ">
 
-
-      </div>
       <!-- trade history here which may have items bought and items wanted -->
-      <div id="userTradeHistory" class="col-4 justify-content-end border border-dark text-center userTrade">
+      <div id="userTradeHistory" class="col-4 justify-content-end border border-dark text-center userTrade navStyle m-2 p-2">
         {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
         <H1>Wish List</H1>
-        <ul>
+        <ul class="wishList">
           {{#each myTicketTradeHistory}}
           <li>
             <div class="row">
@@ -61,23 +58,11 @@
               <div class="col-md-2">{{location}}</div>
               <div class="col-md-6">{{description}}</div>
               <div class="col-md-2">{{price}}</div>
-              {{!--
-              <div class="col-md-2">
-                <button class="trade-ticket" data-ticket_id="{{this.ticket_id}}">Trade</button>
-                <button class="buy-ticket" data-ticket_id="{{this.ticket_id}}">Buy</button>
-              </div> --}}
             </div>
           </li>
           {{/each}}
         </ul>
       </div>
-
-      {{!--
-      <div id="userTrade" class="col-4 justify-content-end border border-dark text-center">
-        {{!-- add handlebars loop here --}} {{! middle section: trade history order by popularity !}}
-        <H1>Trade history here which may have items bought and items wanted</H1>
-      </div> --}}
-
     </div>
 
   </div>
@@ -94,25 +79,10 @@
       </div>
     </div>
   </div>
-
-  {{!--
-  <div class="header-bg">
-    <div id="preloader">
-      <div class="preloader">
-        <div class="row">
-          <div class="col-md-12 d-inline-block" id="ticket-card-list">
-            {{#each myTickets}} {{> tickets/my_ticket_card_partial}} {{/each}}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> --}}
-
-
   <h3 class="text-center">Tickets available for purchace or trade</h3>
   <h4 class="text-center">There are {{tickets.length}} available tickets.</h4>
-  <div class="container">
-    <div class="row lead">
+  <div class="container border border-dark availableTickets navStyle">
+    <div class="row lead ">
       <div class="col-md-2">Ticket name</div>
       <div class="col-md-2">Location</div>
       <div class="col-md-2">Description</div>
@@ -128,21 +98,9 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid">
-    <div class="row ">
-      <div class="col-5"></div>
-      <div class="col-2 form-group">
-        <label for="exampleInputPassword1">Find events near you!</label>
-        <input type="text" class="form-control" id="eventInput" placeholder="look up an event">
-      </div>
-    </div>
-  </div>
-
-
   <div class="container">
-    
     <div class="row">
-      <div class="col-md-4 ">
+      <div class="col-md-4 border border-dark navStyle mt-2 mb-2">
         <form class="create-ticket-form">
           <fieldset>
             <legend></legend>
@@ -165,7 +123,7 @@
                     <li>
                       <a class="dropdown-item" data-lookupeventid={{lookup_event_id}}>{{event_name}}</a>
                     </li>
-                    {{!-- {{> tickets/lookup_event_menu_item_partial}} --}} {{/each}}
+                    {{/each}}
                   </ul>
                 </div>
               </div>
@@ -186,14 +144,13 @@
           <button type="submit" class="btn btn-primary mb-3">Add</button>
         </form>
         <label>Enter a ticket you want to store and click the "Add" button</label>
-
       </div>
     </div>
   </div>
 
   <footer class="footer navbar-fixed-bottom">
     {{! bottom section: user-specific info !}}
-    <div class="container">
+    <div class="container navStyle">
       <div class="row  justify-content-center border border-dark text-center">
         <div class="col-12">
           <ul>

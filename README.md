@@ -41,9 +41,4 @@ Goolge login auth
     
     Run npm instal for dependencies
 
-Other Requirements:
 
-Must have a polished frontend / UI
-Must meet good quality coding standards (indentation, scoping, naming)
-Must NOT use alerts, confirms, or prompts (look into modals)
-Must have some sort of repeating element (table, columns, etc)

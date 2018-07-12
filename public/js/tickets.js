@@ -121,7 +121,7 @@ $(function () {
 
   }
 
-  setInterval(changeBackground, 5000);
+  setInterval(changeBackground, 10000);
 
 
   var logoImage = [
@@ -284,6 +284,17 @@ $(function () {
     // add this ticket to user preference
     addTicketToUserPreference(val);
 
+
+    // Check browser support
+if (typeof (Storage) !== "undefined") {
+  // Store
+  localStorage.setItem("userPref", imageArray);
+  // Retrieve
+  // document.getElementById("result").innerHTML = localStorage.getItem("userPref");
+} else {
+  document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+
   });
 
   // adds submit button for adding image to the preference div
@@ -357,3 +368,4 @@ $(function () {
     });
   };
 });
+

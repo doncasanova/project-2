@@ -43,6 +43,7 @@ Goolge login auth
     Run npm instal for dependencies
 
 Project Requierments
+<<<<<<< HEAD
  
 
 Project challanges:
@@ -51,3 +52,9 @@ Project challanges:
 
  
 
+=======
+ ![alt text](/images/requirements.png "Requirements")
+
+Project challanges:
+ Struggled with Google auth playing nice with Heroku. As of 7/12/2018 we are not able to get to our user page due to this.
+>>>>>>> don

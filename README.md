@@ -6,13 +6,14 @@ This application is a ticket trading site where a user under their log-in can su
 
 API used is Event bright
 
-AJAX to pull data
-
 Bootstrap/CSS for styling
 
 Mysql DB
 
 GitHub pages
+
+Deployed to Heroku (https://dashboard.heroku.com/apps/powerful-mountain-61110)
+Live: (https://powerful-mountain-61110.herokuapp.com/)
 
 Goolge login auth
 
@@ -41,4 +42,12 @@ Goolge login auth
     
     Run npm instal for dependencies
 
+Project Requierments
+ 
+
+Project challanges:
+ Struggled with Google auth playing nice with Heroku. As of 7/12/2018 we are not able to get to our user page due to this.
+  
+
+ 
 
